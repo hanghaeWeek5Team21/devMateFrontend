@@ -16,6 +16,11 @@ const Image = (props) => {
   );
 };
 
+Image.defaultProps = {
+  src: "https://spartacodingclub.kr/static/css/images/ogimage2.jpg",
+  size: 400,
+};
+
 const ImageDefault = styled.div`
   --size: ${(props) => props.size}px;
   width: var(--size);
