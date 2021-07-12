@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Input, Text, Button, Image } from '../elements';
+import { Grid, Input, Text, Button, Image } from '../elements/Index';
 import axios from 'axios';
 
 const Signup = (props) => {

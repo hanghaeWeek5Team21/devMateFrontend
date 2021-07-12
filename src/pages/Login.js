@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Input, Text, Button } from '../elements';
+import { Grid, Input, Text, Button } from '../elements/Index';
 import axios from 'axios';
 
 const Login = (props) => {

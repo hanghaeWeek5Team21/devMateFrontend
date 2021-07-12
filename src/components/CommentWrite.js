@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Input, Button } from '../elements';
+import { Grid, Input, Button } from '../elements/Index';
 
 const CommentWrite = () => {
   return (
