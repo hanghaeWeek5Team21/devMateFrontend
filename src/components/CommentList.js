@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Text } from '../elements';
+import { Grid, Image, Text } from '../elements/Index';
 
 const CommentList = () => {
   return (

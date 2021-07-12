@@ -1,9 +1,9 @@
 import React from "react";
-import { Grid, Image, Text, Button, HeartButton } from "../elements/index";
+import { Grid, Image, Text, HeartButton } from "../elements/Index";
 import { history } from "../redux/configureStore";
 
 import { useDispatch } from "react-redux";
-import { ActionCreator as postActions } from "../redux/modules/Post_module";
+import { actionCreators as postActions } from "../redux/modules/Post_module";
 
 const Post = React.memo((props) => {
   const dispatch = useDispatch();

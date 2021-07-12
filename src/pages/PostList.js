@@ -3,7 +3,7 @@ import Post from "../components/Post";
 import { useSelector, useDispatch } from "react-redux";
 import { ActionCreator as PostActions } from "../redux/modules/Post_module";
 import InfinityScroll from "../shared/InfinityScroll";
-import { Grid } from "../elements/index";
+import { Grid } from "../elements/Index";
 
 const PostList = (props) => {
   const dispatch = useDispatch();
