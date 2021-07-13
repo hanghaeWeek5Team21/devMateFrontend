@@ -66,7 +66,7 @@ const signupDB = (username, password, name, skill) => {
         },
         { withCredentials: true }
       )
-      .then(() => {
+      .then((response) => {
         dispatch(
           setUser({
             username: username,
@@ -78,8 +78,9 @@ const signupDB = (username, password, name, skill) => {
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThBx8M3gzArY15Olr5TseLdHg8RNCH5Uc0SA&usqp=CAU',
           })
         );
+        window.alert(response.data.msg);
+        document.location.href = '/login';
       })
-      .then((response) => console.log(response.data))
       .catch((error) => {
         console.log(error);
       });

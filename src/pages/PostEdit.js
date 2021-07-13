@@ -29,6 +29,7 @@ const PostEdit = (props) => {
             window.alert('비밀번호와 일치하지 않습니다.');
             return;
         }
+
         axios.patch(config.api + '/api/user', {
             password: pwd,
             name: user_name,
@@ -40,7 +41,8 @@ const PostEdit = (props) => {
             .then(
                 response => {
                     if (response.data.res) {
-
+                        window.alert(response.data.msg);
+                        document.location.href = "/";
                     } else {
                         window.alert(response.data.msg);
                     }

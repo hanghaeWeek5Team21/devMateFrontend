@@ -27,7 +27,10 @@ const Header = (props) => {
           <Grid>
             <Grid is_flex>
               <Grid margin="0px 4px 0px 0px">
-                <Button>내 정보</Button>
+                <Button _onClick={() => {
+                  document.location.href = '/edit';
+                }}
+                >내 정보</Button>
               </Grid>
               <Button
                 _onClick={() => {

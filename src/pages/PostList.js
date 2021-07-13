@@ -18,6 +18,7 @@ const PostList = (props) => {
     if (getCookie('is_login') == 'true') {
       dispatch(userActions.loginDB());
     }
+
     if (post_list.length < 2) {
       dispatch(PostActions.getPostDB());
     }
