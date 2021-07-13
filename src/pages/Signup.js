@@ -4,13 +4,15 @@ import axios from "axios";
 import { config } from "../shared/config";
 
 const SignUp = (props) => {
-  const [id, setId] = React.useState('');
-  const [pwd, setPwd] = React.useState('');
-  const [pwd_check, setPwdCheck] = React.useState('');
-  const [user_name, setUserName] = React.useState('');
-  const [skill, setSkill] = React.useState('');
-  const [introduce, setIntroduce] = React.useState('');
-  const [image_url, setImageURL] = React.useState('https://static.remove.bg/remove-bg-web/8be32deab801c5299982a503e82b025fee233bd0/assets/start-0e837dcc57769db2306d8d659f53555feb500b3c5d456879b9c843d1872e7baa.jpg');
+  const [id, setId] = React.useState("");
+  const [pwd, setPwd] = React.useState("");
+  const [pwd_check, setPwdCheck] = React.useState("");
+  const [user_name, setUserName] = React.useState("");
+  const [skill, setSkill] = React.useState("");
+  const [introduce, setIntroduce] = React.useState("");
+  const [image_url, setImageURL] = React.useState(
+    "https://static.remove.bg/remove-bg-web/8be32deab801c5299982a503e82b025fee233bd0/assets/start-0e837dcc57769db2306d8d659f53555feb500b3c5d456879b9c843d1872e7baa.jpg"
+  );
 
   const signUp = () => {
     function emailCheck(id) {
@@ -19,42 +21,44 @@ const SignUp = (props) => {
       return false;
     }
     if (
-      id === '' ||
-      pwd === '' ||
-      user_name === '' ||
-      skill === '' ||
-      introduce === '' ||
-      image_url === ''
+      id === "" ||
+      pwd === "" ||
+      user_name === "" ||
+      skill === "" ||
+      introduce === "" ||
+      image_url === ""
     ) {
-      window.alert('모두 입력해주세요');
+      window.alert("모두 입력해주세요");
       return;
     }
     if (!emailCheck(id)) {
-      window.alert('이메일 형식이 맞지 않습니다.');
+      window.alert("이메일 형식이 맞지 않습니다.");
       return;
     }
     if (pwd !== pwd_check) {
-      window.alert('비밀번호와 일치하지 않습니다.');
+      window.alert("비밀번호와 일치하지 않습니다.");
       return;
     }
-    axios.post(config.api + '/api/user', {
-      username: id,
-      password: pwd,
-      name: user_name,
-      skill: skill,
-      introduce: introduce,
-      image_url: image_url
-    },
-      { withCredentials: true })
-      .then(
-        response => {
-          if (response.data.res) {
-            document.location.href = '/login';
-          } else {
-            window.alert(response.data.msg);
-          }
+    axios
+      .post(
+        config.api + "/api/user",
+        {
+          username: id,
+          password: pwd,
+          name: user_name,
+          skill: skill,
+          introduce: introduce,
+          image_url: image_url,
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        if (response.data.res) {
+          document.location.href = "/login";
+        } else {
+          window.alert(response.data.msg);
         }
-      );
+      });
   };
 
   return (
@@ -110,7 +114,7 @@ const SignUp = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <div style={{ width: '100%', height: '1px', background: 'red' }}></div>
+        <div style={{ width: "100%", height: "1px", background: "red" }}></div>
         {/* <label for="skill">주특기 선택</label> */}
         <input
           type="radio"
@@ -146,7 +150,7 @@ const SignUp = (props) => {
             setIntroduce(e.target.value);
           }}
         />
-        <Button margin="24px 0px 0px 0px" _onClick={signUp}>
+        <Button margin="24px 0px 0px 0px" _onClick={SignUp}>
           등록하기
         </Button>
       </Grid>

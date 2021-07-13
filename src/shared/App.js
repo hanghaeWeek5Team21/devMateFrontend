@@ -11,11 +11,20 @@ import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import PostEdit from '../pages/PostEdit';
 
-// components
+// components, elements
+import Header from "../components/Header";
+import { Grid, Button } from "../elements/Index";
 
 function App() {
   return (
     <React.Fragment>
+      <Grid>
+        <Header />
+        <BrowserRouter>
+          <Route path="/" exact component={PostList} />
+        </BrowserRouter>
+      </Grid>
+
       <BrowserRouter>
         <Route path="/edit" exact component={PostEdit} />
         <Route path="/signup" exact component={SignUp} />
