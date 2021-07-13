@@ -82,12 +82,12 @@ const toggleLikeDB = (post_id, is_like) => {
 
     console.log(_post);
     // let likeCnt = _post.like_cnt;
-    axios
-      .post(config.api + "/api/likes", { withCredentials: true })
-      .then((response) => {
-        console.log(response);
-        // likeCnt =
-      });
+
+    axios.post(config.api + '/api/likes', {
+      user_id: 1,
+    },
+      { withCredentials: true })
+      .then(response => response.data);
   };
 };
 
