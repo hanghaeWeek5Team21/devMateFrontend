@@ -35,7 +35,7 @@ const Post = React.memo((props) => {
             _onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              dispatch(postActions.toggleLikeFB(props.id));
+              dispatch(postActions.toggleLikeDB(props.id));
             }}
             is_like={props.is_like}
           ></HeartButton>

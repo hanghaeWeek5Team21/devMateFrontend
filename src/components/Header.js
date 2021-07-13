@@ -1,5 +1,5 @@
-import React from 'react';
-import { Grid, Text, Button } from '../elements';
+import React from "react";
+import { Grid, Text, Button } from "../elements/Index";
 
 const Header = (props) => {
   return (

@@ -7,14 +7,23 @@ import { history } from "../redux/configureStore";
 
 // pages
 import PostList from "../pages/PostList";
-import Login from '../pages/Login';
-import SignUp from '../pages/SignUp';
+import Login from "../pages/Login";
+import SignUp from "../pages/Signup";
 
-// components
+// components, elements
+import Header from "../components/Header";
+import { Grid, Button } from "../elements/Index";
 
 function App() {
   return (
     <React.Fragment>
+      <Grid>
+        <Header />
+        <BrowserRouter>
+          <Route path="/" exact component={PostList} />
+        </BrowserRouter>
+      </Grid>
+
       <BrowserRouter>
         <Route path="/signup" exact component={SignUp} />
         <Route path="/login" exact component={Login} />
