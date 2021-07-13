@@ -20,7 +20,7 @@ Text.defaultProps = {
   color: "222831",
   size: "16px",
   margin: false,
-  _onClick: () => {},
+  _onClick: () => { },
 };
 
 const P = styled.p`

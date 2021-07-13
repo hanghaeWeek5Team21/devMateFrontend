@@ -9,6 +9,7 @@ import { history } from "../redux/configureStore";
 import PostList from "../pages/PostList";
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
+import PostEdit from '../pages/PostEdit';
 
 // components
 
@@ -16,6 +17,7 @@ function App() {
   return (
     <React.Fragment>
       <BrowserRouter>
+        <Route path="/edit" exact component={PostEdit} />
         <Route path="/signup" exact component={SignUp} />
         <Route path="/login" exact component={Login} />
         <Route path="/" exact component={PostList} />

@@ -3,17 +3,18 @@ import styled from 'styled-components';
 import { Text, Grid } from './Index';
 
 const Input = (props) => {
-  const { multiLine, type, label, placeholder, value, _onChange, name } = props;
+  const { multiLine, type, label, placeholder, value, _onChange, name, id, readOnly = false } = props;
 
   if (multiLine) {
     return (
       <Grid>
         {label && <Text margin="0px">{label}</Text>}
         <ElTextarea
+          id={id}
           rows={10}
-          value={value}
           placeholder={placeholder}
           onChange={_onChange}
+          readOnly={readOnly}
         />
       </Grid>
     );
@@ -24,10 +25,12 @@ const Input = (props) => {
       <Grid>
         {label && <Text margin="0px">{label}</Text>}
         <ElInput
+          id={id}
           type={type}
           placeholder={placeholder}
           onChange={_onChange}
           name={name}
+          readOnly={readOnly}
         />
       </Grid>
     </React.Fragment>
