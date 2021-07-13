@@ -5,6 +5,7 @@ import { actionCreators as PostActions } from "../redux/modules/Post_module";
 import { actionCreators as userActions } from "../redux/modules/User_module";
 import InfinityScroll from "../shared/InfinityScroll";
 import { Grid } from "../elements/Index";
+import { getCookie } from "../shared/Cookie";
 
 const PostList = (props) => {
   const dispatch = useDispatch();
@@ -14,7 +15,9 @@ const PostList = (props) => {
   const { history } = props;
 
   React.useEffect(() => {
-    dispatch(userActions.loginDB());
+    if (getCookie('is_login') == 'true') {
+      dispatch(userActions.loginDB());
+    }
     if (post_list.length < 2) {
       dispatch(PostActions.getPostDB());
     }

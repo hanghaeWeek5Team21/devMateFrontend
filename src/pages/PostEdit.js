@@ -40,7 +40,7 @@ const PostEdit = (props) => {
             .then(
                 response => {
                     if (response.data.res) {
-                        document.location.href = '/login';
+
                     } else {
                         window.alert(response.data.msg);
                     }

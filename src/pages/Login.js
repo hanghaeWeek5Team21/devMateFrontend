@@ -1,7 +1,28 @@
 import React from 'react';
 import { Grid, Input, Text, Button } from '../elements/Index';
+import { useDispatch } from 'react-redux';
+import { actionCreators as userActions } from '../redux/modules/User_module';
 
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const [id, setId] = React.useState('');
+  const [pwd, setPwd] = React.useState('');
+
+  const login = () => {
+    // if (id === '' || pwd === '') {
+    //   window.alert('아이디 혹은 비밀번호가 공란입니다.');
+    //   return;
+    // }
+
+    // if (!emailCheck(id)) {
+    //   window.alert('이메일 형식이 맞지 않습니다.');
+    //   return;
+    // }
+
+    dispatch(userActions.loginDB(id, pwd));
+  };
+
   return (
     <React.Fragment>
       <Grid padding="16px">
@@ -24,6 +45,10 @@ const Login = () => {
           <Button
             type="submit"
             margin="24px 0px 0px 0px"
+            _onClick={() => {
+              console.log('로그인 했어!');
+              login();
+            }}
           >
             로그인
           </Button>
