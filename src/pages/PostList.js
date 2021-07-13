@@ -2,7 +2,7 @@ import React from "react";
 import Post from "../components/Post";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as PostActions } from "../redux/modules/Post_module";
-import { actionCreators as userActions } from '../redux/modules/User_module';
+import { actionCreators as userActions } from "../redux/modules/User_module";
 import InfinityScroll from "../shared/InfinityScroll";
 import { Grid } from "../elements/Index";
 
@@ -25,7 +25,6 @@ const PostList = (props) => {
       <Grid bg={"#EFF6FF"} padding="20px 0px">
         <InfinityScroll loading={is_loading}>
           {Object.keys(post_list).map((i, idx) => {
-            console.log(post_list);
             return (
               <Grid
                 key={post_list[i].id}
