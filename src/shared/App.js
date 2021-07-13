@@ -8,14 +8,19 @@ import { history } from "../redux/configureStore";
 // pages
 import PostList from "../pages/PostList";
 
-// components
+// components, elements
+import Header from "../components/Header";
+import { Grid, Button } from "../elements/Index";
 
 function App() {
   return (
     <React.Fragment>
-      <BrowserRouter>
-        <Route path="/" exact component={PostList} />
-      </BrowserRouter>
+      <Grid>
+        <Header />
+        <BrowserRouter>
+          <Route path="/" exact component={PostList} />
+        </BrowserRouter>
+      </Grid>
     </React.Fragment>
   );
 }

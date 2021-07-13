@@ -9,10 +9,8 @@ const PostList = (props) => {
   const dispatch = useDispatch();
   const post_list = useSelector((state) => state.post.list);
   const is_loading = useSelector((state) => state.post.is_loading);
-  const paging = useSelector((state) => state.post.paging);
 
   const { history } = props;
-
 
   React.useEffect(() => {
     if (post_list.length < 2) {
@@ -23,24 +21,19 @@ const PostList = (props) => {
   return (
     <React.Fragment>
       <Grid bg={"#EFF6FF"} padding="20px 0px">
-        <InfinityScroll
-          callNext={() => {
-            console.log("next!");
-            // dispatch(PostActions.getPostFB(paging.next));
-          }}
-          // is_next={paging.next ? true : false}
-          loading={is_loading}
-        >
-          {Object.keys(post_list).map((i) => {
+        <InfinityScroll loading={is_loading}>
+          {Object.keys(post_list).map((i, idx) => {
+            console.log(post_list);
             return (
               <Grid
-                key={i.id}
+                key={post_list[i].id}
                 bg="#ffffff"
+                margin="8px 0px"
                 _onClick={() => {
                   history.push(`/post/${i.id}`);
                 }}
               >
-                <Post {...post_list[i]} />
+                <Post key={post_list[i].id} {...post_list[i]} />
               </Grid>
             );
           })}
@@ -51,6 +44,7 @@ const PostList = (props) => {
 };
 
 Post.defaultProps = {
+  id: "1",
   name: "shane",
   image_url: "https://spartacodingclub.kr/static/css/images/ogimage2.jpg",
   skill: "React",
