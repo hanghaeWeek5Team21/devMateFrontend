@@ -4,7 +4,7 @@ import { produce } from 'immer';
 import { config } from '../../shared/config';
 
 import axios from 'axios';
-import { setCookie, deleteCookie } from '../../shared/Cookie';
+import { setCookie, deleteCookie, getCookie } from '../../shared/Cookie';
 
 // 액션 타입
 const LOG_OUT = 'LOG_OUT';
