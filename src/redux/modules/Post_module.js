@@ -97,11 +97,13 @@ export default handleActions(
     [GET_POST]: (state, action) =>
       produce(state, (draft) => {
         draft.list = action.payload.post_list;
+
       }),
     [TOGGLE_LIKE]: (state, action) =>
       produce(state, (draft) => {
         draft.post = action.payload.post;
         draft.is_like = action.payload.is_like;
+
       }),
   },
   initialState
