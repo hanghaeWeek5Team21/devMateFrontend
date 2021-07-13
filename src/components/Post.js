@@ -13,7 +13,7 @@ const Post = React.memo((props) => {
       <Grid>
         <Grid is_flex padding="16px">
           <Grid is_flex width="auto">
-            <Text bold>{props.user_info.name}</Text>
+            <Text bold>{props.name}</Text>
           </Grid>
           <Grid padding="16px">
             <Text>{props.skill}</Text>

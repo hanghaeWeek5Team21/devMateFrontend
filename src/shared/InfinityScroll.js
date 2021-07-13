@@ -49,7 +49,7 @@ const InfinityScroll = (props) => {
 
 InfinityScroll.defaultProps = {
   children: null,
-  callNext: () => {},
+  callNext: () => { },
   is_next: false,
   loading: false,
 };

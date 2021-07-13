@@ -12,15 +12,16 @@ const LOADING = "LOADING"; // 로딩하기
 const LIKE_TOGGLE = "LIKE_TOGGLE"; // 좋아요 토글
 
 //action creators
-const getPost = createAction(GET_POST, (post_list, paging) => ({
+const getPost = createAction(GET_POST, (post_list) => ({
   post_list,
-  paging,
 }));
 const editPost = createAction(EDIT_POST, (post_id, post) => ({
   post_id,
   post,
 }));
-const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
+const loading = createAction(LOADING, (is_loading) => ({
+  is_loading
+}));
 const likeToggle = createAction(LIKE_TOGGLE, (post_id, is_like = null) => ({
   post_id,
   is_like,
@@ -30,7 +31,6 @@ const initialState = {
   list: [],
   detail_list: [],
   is_loading: false,
-  paging: { start: null, size: 5 },
 };
 
 const initialPost = {
@@ -38,50 +38,64 @@ const initialPost = {
   image_url: "https://spartacodingclub.kr/static/css/images/ogimage2.jpg",
   skill: "리액트",
   introduce: "안녕하세요. 향해 2기 shane입니다. 다함께 즐코해요~!",
-  comment: "",
+  comment_cnt: "",
   like_cnt: 0,
   is_like: false,
 };
 
 // middleWare
 
+
 const getPostDB = (start = null, size = null) => {
   return function (dispatch, getState) {
-    let _paging = getState().post.paging;
-    if (!_paging.page) {
-      return;
-    }
+    // let _paging = getState().post.paging;
+    // 페이지가 없으면 로딩이 되게끔
+    // if (!_paging.page) {
+    //   return;
+    // }
     dispatch(loading(true));
-    const options = {
-      url: "config.api",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    };
-    axios(options).then((response) => {
-      console.log(response);
-      let post_list = [];
-    });
+    axios.get(config.api + '/api/user',
+      { withCredentials: true })
+      .then(response => {
+        let post_list = [];
+        for (let i = 0; i < response.data.result.length; i++) {
+          let initialPost = {
+            name: response.data.result[i].name,
+            image_url: response.data.result[i].imageUrl,
+            skill: response.data.result[i].skill,
+            introduce: response.data.result[i].introduce,
+            comment_cnt: Object.keys(response.data.result[i].comments).length,
+            like_cnt: Object.keys(response.data.result[i].likes).length,
+            is_like: false,
+          }
+          post_list.push(initialPost);
+        }
+        dispatch(getPost(post_list));
+      }
+      );
   };
 };
 
 // reducer
-export default handleActions({
-  [GET_POST]: (state, action) =>
-    produce(state, (draft) => {
-      draft.list.push(...action.payload.post_list);
-      draft.paging = action.payload.paging;
-      draft.list = draft.list.reduce((acc, cur) => {
-        if (acc.findIndex((a) => a.id === cur.id) === -1) {
-          return [...acc, cur];
-        } else {
-          acc[acc.findIndex((a) => a.id === cur.id)] = null;
-          return acc;
-        }
-      }, []);
-    }),
-});
+export default handleActions(
+  {
+    [GET_POST]: (state, action) =>
+      produce(state, (draft) => {
+        // draft.list.push(...action.payload.post_list);
+        draft.list = action.payload.post_list;
+
+        // draft.list = draft.list.reduce((acc, cur) => {
+        //   if (acc.findIndex((a) => a.id === cur.id) === -1) {
+        //     return [...acc, cur];
+        //   } else {
+        //     acc[acc.findIndex((a) => a.id === cur.id)] = null;
+        //     return acc;
+        //   }
+        // }, []);
+      }),
+  },
+  initialState
+);
 
 const actionCreators = {
   getPost,

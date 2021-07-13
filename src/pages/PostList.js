@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "../components/Post";
 import { useSelector, useDispatch } from "react-redux";
-import { ActionCreator as PostActions } from "../redux/modules/Post_module";
+import { actionCreators as PostActions } from "../redux/modules/Post_module";
 import InfinityScroll from "../shared/InfinityScroll";
 import { Grid } from "../elements/Index";
 
@@ -13,9 +13,10 @@ const PostList = (props) => {
 
   const { history } = props;
 
+
   React.useEffect(() => {
-    if (post_list < 2) {
-      // dispatch(postActions.getPostFB());
+    if (post_list.length < 2) {
+      dispatch(PostActions.getPostDB());
     }
   }, []);
 
@@ -25,21 +26,21 @@ const PostList = (props) => {
         <InfinityScroll
           callNext={() => {
             console.log("next!");
-            // dispatch(postActions.getPostFB(paging.next));
+            // dispatch(PostActions.getPostFB(paging.next));
           }}
-          is_next={paging.next ? true : false}
+          // is_next={paging.next ? true : false}
           loading={is_loading}
         >
-          {post_list.map((p, idx) => {
+          {Object.keys(post_list).map((i) => {
             return (
               <Grid
-                key={p.id}
+                key={i.id}
                 bg="#ffffff"
                 _onClick={() => {
-                  history.push(`/post/${p.id}`);
+                  history.push(`/post/${i.id}`);
                 }}
               >
-                <Post {...p} />
+                <Post {...post_list[i]} />
               </Grid>
             );
           })}
