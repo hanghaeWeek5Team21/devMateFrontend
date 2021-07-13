@@ -39,6 +39,7 @@ const loginDB = (start = null, size = null) => {
       });
   };
 };
+
 const logoutDB = (start = null, size = null) => {
   return function (dispatch, getState) {
     deleteCookie("user");

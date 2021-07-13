@@ -81,17 +81,7 @@ export default handleActions(
   {
     [GET_POST]: (state, action) =>
       produce(state, (draft) => {
-        // draft.list.push(...action.payload.post_list);
         draft.list = action.payload.post_list;
-
-        // draft.list = draft.list.reduce((acc, cur) => {
-        //   if (acc.findIndex((a) => a.id === cur.id) === -1) {
-        //     return [...acc, cur];
-        //   } else {
-        //     acc[acc.findIndex((a) => a.id === cur.id)] = null;
-        //     return acc;
-        //   }
-        // }, []);
       }),
   },
   initialState
