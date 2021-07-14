@@ -24,9 +24,9 @@ const editPost = createAction(EDIT_POST, (post_id, post) => ({
 const loading = createAction(LOADING, (is_loading) => ({
   is_loading,
 }));
-const toggleLike = createAction(TOGGLE_LIKE, (post, is_like) => ({
+const toggleLike = createAction(TOGGLE_LIKE, (post, post_id) => ({
   post,
-  is_like,
+  post_id,
 }));
 
 const initialState = {
@@ -59,13 +59,11 @@ const getPostDB = (start = null, size = null) => {
               id: user.id,
 
               user_liked: false,
-
             };
             if (user.comments != null) {
               initialPost.comment_cnt = Object.keys(user.comments).length;
             }
             if (user.likes != null) {
-
               for (let like of user.likes) {
                 let author_id = null;
                 if (typeof like.author.id != "undefined") {
@@ -108,17 +106,13 @@ const toggleLikeDB = (post_id) => {
       )
       .then((response) => {
         is_like = is_like === false ? true : false;
-        console.log(is_like);
-        console.log(like_cnt);
         like_cnt = is_like === true ? like_cnt + 1 : like_cnt - 1;
 
-        console.log(like_cnt);
         const like_post = {
           like_cnt: like_cnt,
           is_like: is_like,
         };
-        console.log(like_post);
-        dispatch(toggleLike(like_post));
+        dispatch(toggleLike(like_post, post_id));
       });
   };
 };
@@ -136,7 +130,6 @@ export default handleActions(
         let idx = draft.list.findIndex((p) => p.id === action.payload.post_id);
         draft.list[idx].is_like = action.payload.post.is_like;
         draft.list[idx].like_cnt = action.payload.post.like_cnt;
-        console.log(draft.list);
       }),
   },
   initialState
