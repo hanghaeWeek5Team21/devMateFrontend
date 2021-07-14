@@ -22,7 +22,7 @@ const Input = (props) => {
         <ElTextarea
           id={id}
           rows={10}
-          value={value}
+          // value={value}
           placeholder={placeholder}
           onChange={_onChange}
           readOnly={readOnly}
@@ -38,7 +38,7 @@ const Input = (props) => {
         <ElInput
           id={id}
           type={type}
-          value={value}
+          // value={value}
           placeholder={placeholder}
           onChange={_onChange}
           name={name}
@@ -55,7 +55,7 @@ Input.defaultProps = {
   label: false,
   placeholder: '텍스트 입력',
   value: '',
-  _onChange: () => {},
+  _onChange: () => { },
   name: '',
 };
 
