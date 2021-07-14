@@ -27,12 +27,14 @@ const initialState = {
 };
 
 // 댓글 작성
-const postComment = (comment) => {
+const postComment = (comment, user_id) => {
+  console.log(comment);
+  console.log(user_id);
   axios
     .post(
       config.api + '/api/comment',
       {
-        user_id: '6',
+        user_id: user_id,
         contents: comment,
       },
       { withCredentials: true }
@@ -44,12 +46,12 @@ const postComment = (comment) => {
 };
 
 const getCommentFB = (post_id) => {
-  return function (dispatch, getState, { history }) {};
+  return function (dispatch, getState, { history }) { };
 };
 
 export default handleActions(
   {
-    [SET_COMMENT]: (state, action) => produce(state, (draft) => {}),
+    [SET_COMMENT]: (state, action) => produce(state, (draft) => { }),
     [ADD_COMMENT]: (state, action) =>
       produce(state, (draft) => {
         // console.log(action.payload.post);

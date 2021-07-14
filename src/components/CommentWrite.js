@@ -1,10 +1,12 @@
 import React from 'react';
+import { isCompositeComponent } from 'react-dom/test-utils';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Grid, Input, Button } from '../elements/Index';
 import { actionCreators as commentActions } from '../redux/modules/Comment_module';
 
 const CommentWrite = (props) => {
+  console.log(props);
   const dispatch = useDispatch();
   const [comment_text, setCommentText] = React.useState();
 
@@ -12,9 +14,8 @@ const CommentWrite = (props) => {
     setCommentText(e.target.value);
   };
 
-  const write = (comment) => {
-    commentActions.postComment(comment);
-    // dispatch(commentActions.postComment(comment));
+  const write = () => {
+    commentActions.postComment(comment_text, props.post_id);
     setCommentText('');
   };
 

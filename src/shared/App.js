@@ -27,7 +27,7 @@ function App() {
       </Grid>
 
       <BrowserRouter>
-        <Route path="/detail" exact component={PostDetail} />
+        <Route path="/detail/*" exact component={PostDetail} />
         <Route path="/edit" exact component={PostEdit} />
         <Route path="/signup" exact component={SignUp} />
         <Route path="/login" exact component={Login} />
