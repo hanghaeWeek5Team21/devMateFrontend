@@ -54,17 +54,23 @@ const getPostDB = (start = null, size = null) => {
       .then((response) => {
         let post_list = [];
         if (response.data.result != null) {
-          for (let i = 0; i < response.data.result.length - 1; i++) {
+          for (let user of response.data.result) {
             let initialPost = {
-              name: response.data.result[i].name,
-              image_url: response.data.result[i].imageUrl,
-              skill: response.data.result[i].skill,
-              introduce: response.data.result[i].introduce,
-              comment_cnt: Object.keys(response.data.result[i].comments).length,
-              like_cnt: Object.keys(response.data.result[i].likes).length,
+              name: user.name,
+              image_url: user.imageUrl,
+              skill: user.skill,
+              introduce: user.introduce,
+              comment_cnt: 0,
+              like_cnt: 0,
               is_like: false,
-              id: response.data.result[i].id,
+              id: user.id,
             };
+            if (user.comments != null) {
+              initialPost.comment_cnt = Object.keys(user.comments).length;
+            }
+            if (user.likes != null) {
+              initialPost.like_cnt = Object.keys(user.likes).length;
+            }
             post_list.push(initialPost);
           }
         }
