@@ -16,35 +16,35 @@ const SignUp = (props) => {
   const [user_name, setUserName] = React.useState('');
   const [skill, setSkill] = React.useState('');
   const [introduce, setIntroduce] = React.useState('');
-  const [image_url, setImageURL] = React.useState(null);
+  const [image_url, setImageURL] = React.useState('https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif');
 
   const uploadImage = () => {
-    let file = document.getElementById("image-input").files[0];
-    if (file == null) {
-      window.alert("파일을 입력해주세요.");
-      return;
-    }
-    const spinner = 'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif';
-    document.getElementById("image-show").src = spinner;
+    // let file = document.getElementById("image-input").files[0];
+    // if (file == null) {
+    //   window.alert("파일을 입력해주세요.");
+    //   return;
+    // }
+    // const spinner = 'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif';
+    // document.getElementById("image-show").src = spinner;
 
-    const formData = new FormData();
-    formData.append('file', file);
-    axios.post(config.api + '/api/file/image', formData, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    })
-      .then(
-        response => {
-          if (response.data.res) {
-            document.getElementById("image-show").src = response.data.result;
-            window.alert(response.data.msg);
-            setImageURL(response.data.result);
-          } else {
-            window.alert(response.data.msg);
-          }
-        }
-      );
+    // const formData = new FormData();
+    // formData.append('file', file);
+    // axios.post(config.api + '/api/file/image', formData, {
+    //   headers: {
+    //     'content-type': 'multipart/form-data'
+    //   }
+    // })
+    //   .then(
+    //     response => {
+    //       if (response.data.res) {
+    //         document.getElementById("image-show").src = response.data.result;
+    //         window.alert(response.data.msg);
+    //         setImageURL(response.data.result);
+    //       } else {
+    //         window.alert(response.data.msg);
+    //       }
+    //     }
+    //   );
   };
 
   const signup = () => {
@@ -53,8 +53,8 @@ const SignUp = (props) => {
       pwd === '' ||
       user_name === '' ||
       skill === '' ||
-      introduce === '' ||
-      image_url === null
+      introduce === ''
+      // || image_url === null
     ) {
       window.alert('모두 입력해주세요');
       return;
