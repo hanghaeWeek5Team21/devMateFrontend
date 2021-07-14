@@ -5,16 +5,16 @@ import { useSelector } from "react-redux";
 import heart_pink from "../shared/heart_pink.png";
 import heart_gray from "../shared/heart_gray.png";
 
-const HeartButton = (props) => {
+const HeartButton = React.memo((props) => {
   const is_like = useSelector((state) => state.post.is_like);
-  const icon_url = props.is_like ? heart_pink : heart_gray;
+  const icon_url = is_like ? heart_pink : heart_gray;
 
   return (
     <React.Fragment>
       <Heart onClick={props._onClick} icon_url={icon_url}></Heart>
     </React.Fragment>
   );
-};
+});
 
 const Heart = styled.div`
   width: 30px;
