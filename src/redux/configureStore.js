@@ -1,17 +1,15 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { createBrowserHistory } from 'history';
-import { connectRouter } from 'connected-react-router';
-import Post from './modules/Post_module';
-import Comment from './modules/Comment_module';
-import Detail from './modules/Detail_module';
 
-// import User from "./modules/User_module";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { createBrowserHistory } from "history";
+import { connectRouter } from "connected-react-router";
+import Post from "./modules/Post_module";
+import User from "./modules/User_module";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-  // user: User,
+  user: User,
   post: Post,
   comment: Comment,
   detail: Detail,
@@ -34,8 +32,8 @@ if (env === 'development') {
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    })
+        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+      })
     : compose;
 
 // 미들웨어 적용
