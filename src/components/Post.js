@@ -2,12 +2,12 @@ import React from "react";
 import { Grid, Image, Text, HeartButton } from "../elements/Index";
 import { history } from "../redux/configureStore";
 
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/Post_module";
 
 const Post = React.memo((props) => {
   const dispatch = useDispatch();
-  console.log(props);
+  const id = props.id;
 
   return (
     <React.Fragment>
