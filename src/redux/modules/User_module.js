@@ -15,7 +15,7 @@ const SET_USER = 'SET_USER';
 const logOut = createAction(LOG_OUT, (user) => ({
   user,
 }));
-const login = createAction(LOG_IN, () => ({}));
+const login = createAction(LOG_IN, (user) => ({ user }));
 const setUser = createAction(SET_USER, (user) => ({ user }));
 
 // initialState
@@ -27,11 +27,12 @@ const initialState = {
 // middleware actions
 const loginDB = (start = null, size = null) => {
   return function (dispatch, getState) {
+    console.log("running cookie change?");
     axios
       .get(config.api + '/api/user/id', { withCredentials: true })
       .then((response) => {
-        setCookie('user', response.data.result);
-        setCookie('is_login', 'true');
+        // setCookie('user', response.data.result);
+        // setCookie('is_login', 'true');
         dispatch(login(response.data.result));
       })
       .catch((error) => {

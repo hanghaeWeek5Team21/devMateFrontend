@@ -22,7 +22,7 @@ const Header = (props) => {
       <React.Fragment>
         <Grid is_flex padding="4px 16px">
           <Grid>
-            <Text>DEVMATE</Text>
+            <Text _onClick={() => { document.location.href = '/' }}>DEVMATE</Text>
           </Grid>
           <Grid>
             <Grid is_flex>
@@ -42,7 +42,7 @@ const Header = (props) => {
             </Grid>
           </Grid>
         </Grid>
-      </React.Fragment>
+      </React.Fragment >
     );
   }
   return (

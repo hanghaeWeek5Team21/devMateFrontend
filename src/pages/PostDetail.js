@@ -22,7 +22,7 @@ const PostDetail = (props) => {
 
   return (
     <React.Fragment>
-      {/* <Post {...detail} /> */}
+      <Post {...detail} />
       <CommentWrite post_id={user_id} />
       <CommentList {...comment_list} />
     </React.Fragment>

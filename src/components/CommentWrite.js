@@ -6,7 +6,6 @@ import { Grid, Input, Button } from '../elements/Index';
 import { actionCreators as commentActions } from '../redux/modules/Comment_module';
 
 const CommentWrite = (props) => {
-  console.log(props);
   const dispatch = useDispatch();
   const [comment_text, setCommentText] = React.useState();
 
@@ -17,6 +16,7 @@ const CommentWrite = (props) => {
   const write = () => {
     commentActions.postComment(comment_text, props.post_id);
     setCommentText('');
+    document.location.reload();
   };
 
   return (

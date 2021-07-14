@@ -7,6 +7,7 @@ import { config } from '../../shared/config';
 
 const SET_COMMENT = 'SET_COMMENT';
 const ADD_COMMENT = 'ADD_COMMENT';
+const DELETE_COMMENT = 'DELETE_COMMENT';
 
 const LOADING = 'LOADING';
 
@@ -17,6 +18,9 @@ const setComment = createAction(SET_COMMENT, (post_id, comment_list) => ({
 const addComment = createAction(ADD_COMMENT, (post_id, comment) => ({
   post_id,
   comment,
+}));
+const deleteComment = createAction(DELETE_COMMENT, (post_id) => ({
+  post_id,
 }));
 
 const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
@@ -45,6 +49,19 @@ const postComment = (comment, user_id) => {
     });
 };
 
+const deleteCommentDB = (comment_id) => {
+  console.log(comment_id);
+  axios
+    .delete(
+      config.api + '/api/comment/' + comment_id,
+      { withCredentials: true }
+    )
+    .then((response) => {
+      window.alert(response.data.msg);
+      document.location.reload();
+    });
+};
+
 const getCommentFB = (post_id) => {
   return function (dispatch, getState, { history }) { };
 };
@@ -52,12 +69,8 @@ const getCommentFB = (post_id) => {
 export default handleActions(
   {
     [SET_COMMENT]: (state, action) => produce(state, (draft) => { }),
-    [ADD_COMMENT]: (state, action) =>
-      produce(state, (draft) => {
-        // console.log(action.payload.post);
-        // const new_comment = action.payload.post;
-        // draft.list.unshift(new_comment);
-      }),
+    [ADD_COMMENT]: (state, action) => produce(state, (draft) => { }),
+    [DELETE_COMMENT]: (state, action) => produce(state, (draft) => { }),
     [LOADING]: (state, action) =>
       produce(state, (draft) => {
         draft.is_loading = action.payload.is_loading;
@@ -71,6 +84,8 @@ const actionCreators = {
   setComment,
   addComment,
   postComment,
+  deleteComment,
+  deleteCommentDB,
 };
 
 export { actionCreators };

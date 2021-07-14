@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { Grid, Image, Text, HeartButton } from "../elements/Index";
 import { history } from "../redux/configureStore";
 
@@ -50,7 +51,8 @@ const Post = React.memo((props) => {
 
 Post.defaultProps = {
   name: "shane",
-  image_url: "https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif",
+  image_url:
+    "https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif",
   skill: "React",
   comment_cnt: 10,
   like_cnt: 0,

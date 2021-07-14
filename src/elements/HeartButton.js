@@ -6,16 +6,7 @@ import heart_pink from "../shared/heart_pink.png";
 import heart_gray from "../shared/heart_gray.png";
 
 const HeartButton = React.memo((props) => {
-  // const idx = useSelector((state) => state.findIndex(p))
-  const _idx = useSelector((state) =>
-    state.post.list.findIndex((p) => p.id === props.id)
-  );
-  // const is_like = useSelector((state) => state.post.list[_idx].is_like);
-
-
-  console.log(props);
-
-  const icon_url = is_like ? heart_pink : heart_gray;
+  const icon_url = props.is_like ? heart_pink : heart_gray;
 
   return (
     <React.Fragment>
