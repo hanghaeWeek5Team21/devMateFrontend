@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Image = (props) => {
-  const { src, size } = props;
+  const { src, size, id } = props;
 
   const styles = {
     src,
@@ -10,14 +10,12 @@ const Image = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <ImageDefault {...styles}></ImageDefault>
-    </React.Fragment>
+    <ImageDefault id={id} {...styles}></ImageDefault>
   );
 };
 
 Image.defaultProps = {
-  src: "https://spartacodingclub.kr/static/css/images/ogimage2.jpg",
+  src: "",
   size: 400,
 };
 

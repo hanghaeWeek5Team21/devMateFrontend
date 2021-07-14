@@ -4,6 +4,7 @@ import { produce } from "immer";
 import { config } from "../../shared/config";
 
 import axios from "axios";
+import { post } from "request";
 
 // actions
 const GET_POST = "GET_POST"; // 정보 불러오기
@@ -47,11 +48,6 @@ const initialPost = {
 
 const getPostDB = (start = null, size = null) => {
   return function (dispatch, getState) {
-    // let _paging = getState().post.paging;
-    // 페이지가 없으면 로딩이 되게끔
-    // if (!_paging.page) {
-    //   return;
-    // }
     dispatch(loading(true));
     axios
       .get(config.api + "/api/user", { withCredentials: true })
@@ -80,7 +76,34 @@ const getPostDB = (start = null, size = null) => {
 
 const toggleLikeDB = (post_id, is_like) => {
   return function (dispatch, getState) {
-    let _post = getState().post.post;
+    let _post = getState().post;
+    let likeCnt = _post.like_cnt;
+    console.log(likeCnt);
+
+    axios
+      .post(
+        config.api + "/api/likes",
+        {
+          user_id: post_id,
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        likeCnt = response.res ? likeCnt + 1 : likeCnt - 1;
+        console.log(likeCnt);
+
+        is_like = response.res ? true : false;
+        console.log(is_like);
+
+        const like_post = {
+          ...post,
+          likeCnt: likeCnt,
+        };
+        console.log(like_post);
+        dispatch(toggleLike(like_post, is_like));
+      });
 
     console.log(_post);
     // let likeCnt = _post.like_cnt;
@@ -99,13 +122,11 @@ export default handleActions(
     [GET_POST]: (state, action) =>
       produce(state, (draft) => {
         draft.list = action.payload.post_list;
-
       }),
     [TOGGLE_LIKE]: (state, action) =>
       produce(state, (draft) => {
         draft.post = action.payload.post;
         draft.is_like = action.payload.is_like;
-
       }),
   },
   initialState

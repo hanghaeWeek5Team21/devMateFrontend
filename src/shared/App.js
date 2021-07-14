@@ -7,9 +7,9 @@ import { history } from "../redux/configureStore";
 
 // pages
 import PostList from "../pages/PostList";
-import Login from '../pages/Login';
-import SignUp from '../pages/SignUp';
-import PostEdit from '../pages/PostEdit';
+import Login from "../pages/Login";
+import SignUp from "../pages/Signup";
+import PostEdit from "../pages/PostEdit";
 
 // components, elements
 import Header from "../components/Header";

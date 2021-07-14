@@ -7,6 +7,7 @@ import { actionCreators as postActions } from "../redux/modules/Post_module";
 
 const Post = React.memo((props) => {
   const dispatch = useDispatch();
+  console.log(props);
 
   return (
     <React.Fragment>

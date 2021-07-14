@@ -50,7 +50,7 @@ const logoutDB = (start = null, size = null) => {
   };
 };
 
-const signupDB = (username, password, name, skill) => {
+const signupDB = (username, password, name, skill, image_url) => {
   return function (dispatch, getState, { history }) {
     axios
       .post(
@@ -61,8 +61,7 @@ const signupDB = (username, password, name, skill) => {
           name: name,
           skill: skill,
           introduce: '사진 들어갔나요?',
-          image_url:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThBx8M3gzArY15Olr5TseLdHg8RNCH5Uc0SA&usqp=CAU',
+          image_url: image_url,
         },
         { withCredentials: true }
       )

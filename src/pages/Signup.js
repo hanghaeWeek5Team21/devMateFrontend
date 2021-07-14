@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Input, Text, Button, Image } from '../elements/Index';
 import axios from 'axios';
+import { config } from "../shared/config";
 
 import { useDispatch } from 'react-redux';
 
@@ -15,20 +16,49 @@ const SignUp = (props) => {
   const [user_name, setUserName] = React.useState('');
   const [skill, setSkill] = React.useState('');
   const [introduce, setIntroduce] = React.useState('');
-  const [image_url, setImageURL] = React.useState('');
+  const [image_url, setImageURL] = React.useState(null);
+
+  const uploadImage = () => {
+    let file = document.getElementById("image-input").files[0];
+    if (file == null) {
+      window.alert("파일을 입력해주세요.");
+      return;
+    }
+    const spinner = 'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif';
+    document.getElementById("image-show").src = spinner;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    axios.post(config.api + '/api/file/image', formData, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+      .then(
+        response => {
+          if (response.data.res) {
+            document.getElementById("image-show").src = response.data.result;
+            window.alert(response.data.msg);
+            setImageURL(response.data.result);
+          } else {
+            window.alert(response.data.msg);
+          }
+        }
+      );
+  };
 
   const signup = () => {
-    // if (
-    //   id === '' ||
-    //   pwd === '' ||
-    //   user_name === '' ||
-    //   skill === '' ||
-    //   introduce === '' ||
-    //   image_url
-    // ) {
-    //   window.alert('모두 입력해주세요');
-    //   return;
-    // }
+    if (
+      id === '' ||
+      pwd === '' ||
+      user_name === '' ||
+      skill === '' ||
+      introduce === '' ||
+      image_url === null
+    ) {
+      window.alert('모두 입력해주세요');
+      return;
+    }
     // if (!emailCheck(id)) {
     //   window.alert('이메일 형식이 맞지 않습니다.');
     //   return;
@@ -38,7 +68,7 @@ const SignUp = (props) => {
       return;
     }
 
-    dispatch(userActions.signupDB(id, pwd, user_name, skill));
+    dispatch(userActions.signupDB(id, pwd, user_name, skill, image_url));
   };
 
   return (
@@ -46,9 +76,11 @@ const SignUp = (props) => {
       <Grid padding="16px">
         <Grid is_flex>
           <Grid padding="16px">
-            <Image size="400" src="http://via.placeholder.com/400x300" />
-            <input type="file" />
-            <Button>업로드</Button>
+            <img size="400" id="image-show"
+              style={{ display: 'flex', justifyContent: 'center', margin: 'auto', width: '400px', height: '300px' }}
+              src="http://via.placeholder.com/400x300" />
+            <input type="file" id="image-input" />
+            <Button _onClick={uploadImage}>업로드</Button>
           </Grid>
           <Grid padding="16px">
             <Text size="32px" bold>
@@ -125,17 +157,12 @@ const SignUp = (props) => {
           label="자기소개"
           multiLine
           _onChange={(e) => {
-            console.log(e.target.value);
+            setIntroduce(e.target.value);
           }}
         />
         <Button margin="24px 0px 0px 0px" _onClick={signup}>
           등록하기
         </Button>
-        <textarea
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
-        ></textarea>
       </Grid>
     </React.Fragment>
   );
