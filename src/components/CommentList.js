@@ -1,8 +1,9 @@
 import React from 'react';
 import { Grid, Text } from '../elements/Index';
+import axios from "axios";
+import { config } from "../shared/config";
 
 const CommentList = (props) => {
-  console.log(props);
   return (
     <React.Fragment>
       <Grid padding="16px">
@@ -19,8 +20,8 @@ const CommentList = (props) => {
 export default CommentList;
 
 const CommentItem = (props) => {
-  console.log(props);
   const { author, skill, introduce, modifiedAt } = props;
+
   return (
     <Grid is_flex>
       <Grid is_flex width="auto">

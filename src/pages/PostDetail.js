@@ -14,18 +14,15 @@ const PostDetail = (props) => {
   let href = window.location.href;
   let user_id = href.substring(href.lastIndexOf('/') + 1);
 
+  console.log(comment_list);
+
   React.useEffect(() => {
     dispatch(detailActions.getDetailDB(user_id));
   }, []);
 
   return (
     <React.Fragment>
-      {/* {post && <Post {...post} />}
-      <Permit>
-        <CommentWrite post_id={id} />
-      </Permit>
-      <CommentList post_id={id} /> */}
-      <Post {...detail} />
+      {/* <Post {...detail} /> */}
       <CommentWrite post_id={user_id} />
       <CommentList {...comment_list} />
     </React.Fragment>
