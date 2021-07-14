@@ -36,14 +36,6 @@ const initialState = {
   is_like: false,
 };
 
-const initialPost = {
-  name: "shane",
-  image_url: "https://spartacodingclub.kr/static/css/images/ogimage2.jpg",
-  skill: "리액트",
-  introduce: "안녕하세요. 향해 2기 shane입니다. 다함께 즐코해요~!",
-  comment_cnt: "",
-};
-
 // middleWare
 
 const getPostDB = (start = null, size = null) => {
@@ -75,8 +67,8 @@ const getPostDB = (start = null, size = null) => {
 const toggleLikeDB = (post_id, is_like) => {
   return function (dispatch, getState) {
     let _post = getState().post;
-    let likeCnt = _post.like_cnt;
-    console.log(likeCnt);
+    let like_cnt = _post.like_cnt;
+    let is_like = _post.is_like;
 
     axios
       .post(
@@ -87,17 +79,14 @@ const toggleLikeDB = (post_id, is_like) => {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
-        likeCnt = response.res ? likeCnt + 1 : likeCnt - 1;
-        console.log(likeCnt);
+        is_like = is_like === false ? true : false;
 
-        is_like = response.res ? true : false;
-        console.log(is_like);
+        like_cnt = is_like ? like_cnt + 1 : like_cnt - 1;
+        console.log(like_cnt);
 
         const like_post = {
           ...post,
-          likeCnt: likeCnt,
+          like_cnt: like_cnt,
         };
         console.log(like_post);
         dispatch(toggleLike(like_post, is_like));
@@ -125,6 +114,7 @@ export default handleActions(
       produce(state, (draft) => {
         draft.post = action.payload.post;
         draft.is_like = action.payload.is_like;
+        draft.like_cnt = action.payload.post.like_cnt;
       }),
   },
   initialState
