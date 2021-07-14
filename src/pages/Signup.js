@@ -1,11 +1,8 @@
 import React from 'react';
 import { Grid, Input, Text, Button, Image } from '../elements/Index';
-import axios from 'axios';
-import { config } from "../shared/config";
-
 import { useDispatch } from 'react-redux';
-
 import { actionCreators as userActions } from '../redux/modules/User_module';
+import { checkRegex, emailRegex } from '../shared/Regex';
 
 const SignUp = (props) => {
   const dispatch = useDispatch();
@@ -59,10 +56,10 @@ const SignUp = (props) => {
       window.alert('모두 입력해주세요');
       return;
     }
-    // if (!emailCheck(id)) {
-    //   window.alert('이메일 형식이 맞지 않습니다.');
-    //   return;
-    // }
+    if (!checkRegex(emailRegex, id)) {
+      window.alert('이메일 형식이 맞지 않습니다.');
+      return;
+    }
     if (pwd !== pwd_check) {
       window.alert('비밀번호와 일치하지 않습니다.');
       return;

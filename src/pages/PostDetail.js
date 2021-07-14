@@ -1,36 +1,33 @@
-import React from "react";
-import Post from "../components/Post";
-import CommentList from "../components/CommentList";
-import CommentWrite from "../components/CommentWrite";
-import Permit from "../shared/Permit";
+import React from 'react';
+import Post from '../components/Post';
+import CommentList from '../components/CommentList';
+import CommentWrite from '../components/CommentWrite';
 
-import { useSelector, useDispatch } from "react-redux";
-import { actionCreators as postActions } from "../redux/modules/Post_module";
+import { useSelector, useDispatch } from 'react-redux';
+import { actionCreators as detailActions } from '../redux/modules/Detail_module';
 
 const PostDetail = (props) => {
   const dispatch = useDispatch();
-  const id = props.match.params.id;
+  const detail = useSelector((state) => state.detail.info);
+  const comment_list = useSelector((state) => state.detail.info.comments);
 
-  const post_list = useSelector((store) => store.post.list);
-
-  const post_idx = post_list.findIndex((p) => p.id === id);
-  const post = post_list[post_idx];
+  let href = window.location.href;
+  let user_id = href.substring(href.lastIndexOf('/') + 1);
 
   React.useEffect(() => {
-    if (post) {
-      return;
-    }
-
-    dispatch(postActions.getOnePostFB(id));
+    dispatch(detailActions.getDetailDB(user_id));
   }, []);
 
   return (
     <React.Fragment>
-      {post && <Post {...post} />}
+      {/* {post && <Post {...post} />}
       <Permit>
         <CommentWrite post_id={id} />
       </Permit>
-      <CommentList post_id={id} />
+      <CommentList post_id={id} /> */}
+      <Post {...detail} />
+      <CommentWrite post_id={user_id} />
+      <CommentList {...comment_list} />
     </React.Fragment>
   );
 };

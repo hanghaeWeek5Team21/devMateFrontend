@@ -13,6 +13,13 @@ const Login = () => {
     dispatch(userActions.loginDB(id, pwd));
   };
 
+  const getRes = () => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    if (params.res == 'false') return false;
+    return true;
+  }
+
   return (
     <React.Fragment>
       <Grid padding="16px">
@@ -32,6 +39,7 @@ const Login = () => {
             name="password"
             placeholder="비밀번호를 입력를 입력해주세요"
           />
+          <Text size="5px" color="red">{getRes() ? '' : "로그인에 실패했습니다."}</Text>
           <Button
             type="submit"
             margin="24px 0px 0px 0px"

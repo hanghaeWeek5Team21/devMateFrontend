@@ -57,12 +57,15 @@ const getPostDB = (start = null, size = null) => {
               like_cnt: 0,
               is_like: false,
               id: user.id,
+
               user_liked: false,
+
             };
             if (user.comments != null) {
               initialPost.comment_cnt = Object.keys(user.comments).length;
             }
             if (user.likes != null) {
+
               for (let like of user.likes) {
                 let author_id = null;
                 if (typeof like.author.id != "undefined") {
@@ -76,6 +79,7 @@ const getPostDB = (start = null, size = null) => {
                   break;
                 }
               }
+
               initialPost.like_cnt = Object.keys(user.likes).length;
             }
             post_list.push(initialPost);

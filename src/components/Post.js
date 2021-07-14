@@ -7,7 +7,6 @@ import { actionCreators as postActions } from "../redux/modules/Post_module";
 
 const Post = React.memo((props) => {
   const dispatch = useDispatch();
-  const id = props.id;
 
   return (
     <React.Fragment>
@@ -51,7 +50,7 @@ const Post = React.memo((props) => {
 
 Post.defaultProps = {
   name: "shane",
-  image_url: "https://spartacodingclub.kr/static/css/images/ogimage2.jpg",
+  image_url: "https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif",
   skill: "React",
   comment_cnt: 10,
   like_cnt: 0,
