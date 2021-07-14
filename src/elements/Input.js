@@ -3,7 +3,17 @@ import styled from 'styled-components';
 import { Text, Grid } from './Index';
 
 const Input = (props) => {
-  const { multiLine, type, label, placeholder, value, _onChange, name, id, readOnly = false } = props;
+  const {
+    multiLine,
+    type,
+    label,
+    placeholder,
+    value,
+    _onChange,
+    name,
+    id,
+    readOnly = false,
+  } = props;
 
   if (multiLine) {
     return (
@@ -12,6 +22,7 @@ const Input = (props) => {
         <ElTextarea
           id={id}
           rows={10}
+          value={value}
           placeholder={placeholder}
           onChange={_onChange}
           readOnly={readOnly}
@@ -27,6 +38,7 @@ const Input = (props) => {
         <ElInput
           id={id}
           type={type}
+          value={value}
           placeholder={placeholder}
           onChange={_onChange}
           name={name}
@@ -43,7 +55,7 @@ Input.defaultProps = {
   label: false,
   placeholder: '텍스트 입력',
   value: '',
-  _onChange: () => { },
+  _onChange: () => {},
   name: '',
 };
 
