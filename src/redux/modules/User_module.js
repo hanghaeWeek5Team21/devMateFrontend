@@ -55,7 +55,7 @@ const signupDB = (username, password, name, skill, intruduce, image_url) => {
   return function (dispatch, getState, { history }) {
     axios
       .post(
-        'http://localhost/api/user',
+        config.api + '/api/user',
         {
           username: username,
           password: password,

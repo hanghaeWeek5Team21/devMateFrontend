@@ -1,9 +1,9 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
 import 'moment';
-import moment from 'moment';
 import axios from 'axios';
 import { config } from '../../shared/config';
+import { getCookie } from '../../shared/Cookie';
 
 const SET_COMMENT = 'SET_COMMENT';
 const ADD_COMMENT = 'ADD_COMMENT';
@@ -32,8 +32,11 @@ const initialState = {
 
 // 댓글 작성
 const postComment = (comment, user_id) => {
-  console.log(comment);
-  console.log(user_id);
+  if (user_id === getCookie('user')) {
+    window.alert("본인의 글에는 댓글을 작성할 수 없습니다.");
+    return;
+  }
+
   axios
     .post(
       config.api + '/api/comment',
@@ -44,8 +47,7 @@ const postComment = (comment, user_id) => {
       { withCredentials: true }
     )
     .then((response) => {
-      console.log(response);
-      console.log(response.data);
+      window.alert(response.data.msg);
     });
 };
 

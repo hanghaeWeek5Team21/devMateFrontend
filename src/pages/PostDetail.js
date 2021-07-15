@@ -15,7 +15,8 @@ const PostDetail = (props) => {
   let href = window.location.href;
   let user_id = href.substring(href.lastIndexOf('/') + 1);
 
-  console.log(detail.introduce);
+  console.log(detail);
+  console.log(comment_list);
 
   React.useEffect(() => {
     dispatch(detailActions.getDetailDB(user_id));
@@ -23,18 +24,11 @@ const PostDetail = (props) => {
 
   return (
     <React.Fragment>
-      <Grid
-        width="50vw"
-        height="100vh"
-        margin="20px auto"
-        border_radius="20px"
-        shadow
-        backgroundImage
-      >
-        <Grid width="400px" margin="auto">
-          <Post {...detail} />
+      <Grid width="450px" margin="auto" padding="20px" shadow>
+        <Grid width="350px" margin="auto">
+          <Post no_like={true} {...detail} />
         </Grid>
-        <Grid width="80%" margin="auto">
+        <Grid width="400px" margin="auto">
           <CommentWrite post_id={user_id} />
           <CommentList {...comment_list} />
         </Grid>

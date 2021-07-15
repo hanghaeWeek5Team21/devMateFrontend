@@ -72,7 +72,6 @@ const getPostDB = (start = null, size = null) => {
                   author_id = like.author;
                 }
                 if (author_id.toString() === getCookie("user")) {
-                  console.log("일치합니다.");
                   initialPost.user_liked = true;
                   break;
                 }
@@ -94,8 +93,11 @@ const toggleLikeDB = (post_id) => {
     let _post = getState().post.list[_idx];
     let like_cnt = _post.like_cnt;
     let is_like = _post.is_like;
-    console.log(_post);
 
+    if (post_id.toString() === getCookie('user')) {
+      window.alert("본인을 좋아요 할 수 없습니다.");
+      return;
+    }
     axios
       .post(
         config.api + "/api/likes",
@@ -105,6 +107,10 @@ const toggleLikeDB = (post_id) => {
         { withCredentials: true }
       )
       .then((response) => {
+        if (!response.data.res) {
+          window.alert(response.data.msg);
+          return;
+        }
         is_like = is_like === false ? true : false;
         like_cnt = is_like === true ? like_cnt + 1 : like_cnt - 1;
 
