@@ -25,26 +25,26 @@ const SignUp = (props) => {
       window.alert("파일을 입력해주세요.");
       return;
     }
-    // const spinner = 'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif';
-    // document.getElementById("image-show").src = spinner;
-    // const formData = new FormData();
-    // formData.append('file', file);
-    // axios.post(config.api + '/api/file/image', formData, {
-    //   headers: {
-    //     'content-type': 'multipart/form-data'
-    //   }
-    // })
-    //   .then(
-    //     response => {
-    //       if (response.data.res) {
-    //         document.getElementById("image-show").src = response.data.result;
-    //         window.alert(response.data.msg);
-    //         setImageURL(response.data.result);
-    //       } else {
-    //         window.alert(response.data.msg);
-    //       }
-    //     }
-    //   );
+    const spinner = 'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif';
+    document.getElementById("image-show").src = spinner;
+    const formData = new FormData();
+    formData.append('file', file);
+    axios.post(config.api + '/api/file/image', formData, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+      .then(
+        response => {
+          if (response.data.res) {
+            document.getElementById("image-show").src = response.data.result;
+            window.alert(response.data.msg);
+            setImageURL(response.data.result);
+          } else {
+            window.alert(response.data.msg);
+          }
+        }
+      );
   };
 
   const signup = () => {
@@ -68,7 +68,7 @@ const SignUp = (props) => {
       return;
     }
 
-    dispatch(userActions.signupDB(id, pwd, user_name, skill, image_url));
+    dispatch(userActions.signupDB(id, pwd, user_name, skill, introduce, image_url));
   };
 
   const background = {
@@ -115,15 +115,10 @@ const SignUp = (props) => {
                   }}
                   src="http://via.placeholder.com/400x300"
                 />
-                <div
-                  style={{
-                    justifyContent: "space-between",
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "10px",
-                  }}
-                >
-                  <input type="file" style={{ width: "10vw" }} />
+
+                <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+                  <input type="file" style={{ width: '10vw' }} id="image-input" />
+
                   <Button _onClick={uploadImage}>업로드</Button>
                 </div>
               </div>

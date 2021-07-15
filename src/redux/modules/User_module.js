@@ -51,7 +51,7 @@ const logoutDB = (start = null, size = null) => {
   };
 };
 
-const signupDB = (username, password, name, skill, image_url) => {
+const signupDB = (username, password, name, skill, intruduce, image_url) => {
   return function (dispatch, getState, { history }) {
     axios
       .post(
@@ -61,7 +61,7 @@ const signupDB = (username, password, name, skill, image_url) => {
           password: password,
           name: name,
           skill: skill,
-          introduce: '사진 들어갔나요?',
+          introduce: intruduce,
           image_url: image_url,
         },
         { withCredentials: true }

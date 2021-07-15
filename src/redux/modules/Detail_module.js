@@ -45,7 +45,6 @@ const getDetailDB = (page_id = 0) => {
                         break;
                     }
                 }
-                console.log(detail);
                 dispatch(getDetail(detail));
             });
     };

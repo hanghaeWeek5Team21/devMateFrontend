@@ -15,7 +15,7 @@ const PostDetail = (props) => {
   let href = window.location.href;
   let user_id = href.substring(href.lastIndexOf('/') + 1);
 
-  console.log(comment_list);
+  console.log(detail.introduce);
 
   React.useEffect(() => {
     dispatch(detailActions.getDetailDB(user_id));
