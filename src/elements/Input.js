@@ -38,9 +38,11 @@ const Input = (props) => {
     <React.Fragment>
       <Grid bg={bg} margin={margin}>
         {label && <Text margin="0px">{label}</Text>}
+
         <ElInput
           id={id}
           type={type}
+
           // value={value}
           placeholder={placeholder}
           onChange={_onChange}
@@ -72,12 +74,17 @@ const ElTextarea = styled.textarea`
 `;
 
 const ElInput = styled.input`
-  border: 1px solid #212121;
+  border: 1px solid #26c281;
   width: ${(props) => props.width};
   padding: 12px 8px;
   box-sizing: border-box;
-  border-radius: 16px;
+  border-radius: 8px;
   outline: none;
+  margin-top: 4px;
+  ::placeholder {
+  color: #999999;
+  opacity: 1; 
+}
 `;
 
 export default Input;

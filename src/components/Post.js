@@ -1,44 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { yellow, grey } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
+import { yellow, grey } from "@material-ui/core/colors";
 
-import { Grid, Image, Text, HeartButton } from '../elements/Index';
-import { useSelector, useDispatch } from 'react-redux';
-import { actionCreators as postActions } from '../redux/modules/Post_module';
+import { Text, HeartButton } from "../elements/Index";
+import { useDispatch } from "react-redux";
+import { actionCreators as postActions } from "../redux/modules/Post_module";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
     minWidth: 345,
+    maxHeight: 500,
     backgroundColor: grey[100],
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
+    paddingTop: "56.25%",
   },
   avatar: {
     backgroundColor: yellow[700],
@@ -47,8 +31,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 18,
     fontWeight: 700,
   },
-  Typography: {
-    minHeight: 100,
+  height: {
+    height: 100,
+    margin: 5,
   },
 }));
 
@@ -74,14 +59,14 @@ const Post = React.memo((props) => {
           </Text>
         }
       />
-
       <CardMedia className={classes.media} image={props.image_url} />
-      <CardContent>
+      <CardContent >
         <Typography
-          variant="body2"
+          variant="body1"
           color="textSecondary"
-          component="p"
-          minHeight="100"
+          component="div"
+          overflow="scroll"
+          className={classes.height}
         >
           {props.introduce}
         </Typography>
@@ -111,12 +96,12 @@ const Post = React.memo((props) => {
 export default Post;
 
 Post.defaultProps = {
-  name: 'shane',
+  name: "shane",
   image_url:
-    'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif',
-  skill: 'React',
+    "https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif",
+  skill: "React",
   comment_cnt: 10,
   like_cnt: 0,
   is_like: false,
-  introduce: '안녕하세요~~!',
+  introduce: "안녕하세요~~!",
 };

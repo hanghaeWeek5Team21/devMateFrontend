@@ -6,11 +6,11 @@ import banner from "../shared/banner.png";
 
 import { Grid, Text, Button } from "../elements/Index";
 
-import { actionCreators as userActions } from "../redux/modules/User_module";
 import { getCookie, setCookie, deleteCookie } from "../shared/Cookie";
 
 const Header = (props) => {
   let is_login = getCookie("is_login");
+  let user = getCookie("user");
 
   const logout = () => {
     deleteCookie("is_login");
@@ -19,7 +19,7 @@ const Header = (props) => {
     document.location.href = "/";
   };
 
-  if (is_login) {
+  if (is_login && user != null && user != 'null' && user != '') {
     return (
       <React.Fragment>
         <Grid is_flex padding="20px 20px">
@@ -40,7 +40,7 @@ const Header = (props) => {
             }}
           >
             <Button
-              margin="0px 4px 0px 0px"
+              margin="0px 10px 0px 0px"
               _onClick={() => {
                 document.location.href = "/edit";
               }}
@@ -61,13 +61,15 @@ const Header = (props) => {
   }
   return (
     <React.Fragment>
-      <Grid is_flex padding="4px 16px">
+      <Grid is_flex padding="20px 20px">
         <Grid>
-          <imageLogo
+          <img
+            src={banner}
+            height="70px"
             onClick={() => {
               document.location.href = "/";
             }}
-          ></imageLogo>
+          />
         </Grid>
         <div
           style={{
@@ -77,7 +79,7 @@ const Header = (props) => {
           }}
         >
           <Button
-            margin="0px 4px 0px 0px"
+            margin="0px 10px 0px 0px"
             _onClick={() => {
               document.location.href = "/login";
             }}

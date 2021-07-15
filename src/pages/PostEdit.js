@@ -4,8 +4,20 @@ import axios from "axios";
 import { config } from "../shared/config";
 import { getCookie } from '../shared/Cookie';
 import { checkRegex, emailRegex } from '../shared/Regex';
+import Card from '@material-ui/core/Card';
+import { makeStyles } from '@material-ui/core/styles';
+import { yellow, grey } from '@material-ui/core/colors';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        minHeight: 730,
+        backgroundColor: grey[100],
+        padding: 20,
+    },
+}));
 
 const PostEdit = (props) => {
+    const classes = useStyles();
     const [id, setId] = React.useState('');
     const [pwd, setPwd] = React.useState('');
     const [pwd_check, setPwdCheck] = React.useState('');
@@ -115,135 +127,126 @@ const PostEdit = (props) => {
             });
     }, []);
 
-    // const background = {
-    //     backgroundImage: `url("https://cdn.codingworldnews.com/news/photo/202106/4144_5858_3337.jpg")`,
-    //     backgroundPosition: 'center',
-    //     backgroundSize: 'cover',
-    //     backgroundRepeat: 'no-repeat',
-    //     display: "flex",
-    //     alignItem: "center",
-    //     justifyContent: "center",
-    //     height: "calc(100vh - 61px)",
-    // }
-
     return (
         <React.Fragment>
-            <div style={background}>
-                <Grid border_radius="7px" padding="16px" width="40vw" margin="50px auto auto" marginTop='30px' bg="white">
-                    <Text size="32px" bold width="100%">
-                        회원수정
-                    </Text>
-                    <Grid is_flex>
-                        <div style={{ display: "flex", alignItems: 'center', width: '50vw', justifyContent: 'center' }}>
-                            <div>
-                                <img
-                                    id="image-show"
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        margin: 'auto',
-                                        width: '20vw',
-                                    }}
-                                    src="http://via.placeholder.com/400x300"
-                                />
-                                <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
-                                    <input type="file" style={{ width: '10vw' }} id="image-input" />
-                                    <Button _onClick={uploadImage}>업로드</Button>
+            <div>
+                <Grid border_radius="7px" padding="16px" width="40vw" margin="0px auto auto" bg="white">
+                    <Card className={classes.root}>
+                        <Text size="32px" bold width="100%">
+                            회원수정
+                        </Text>
+                        <Grid is_flex>
+                            <div style={{ display: "flex", alignItems: 'center', width: '50vw', justifyContent: 'center' }}>
+                                <div>
+                                    <img
+                                        id="image-show"
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            margin: 'auto',
+                                            width: '15vw',
+                                        }}
+                                        src="https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/%EC%82%AC%EC%A7%84%EC%98%90%EB%A1%9C.PNG"  //http://via.placeholder.com/400x300
+                                    />
+                                    <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+                                        <input type="file" style={{ width: '10vw' }} id="image-input" />
+                                        <Button _onClick={uploadImage}>업로드</Button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <Grid padding="16px">
-                            <Grid padding="16px 0px">
-                                <Input
-                                    id="edit-email"
-                                    label="이메일"
-                                    placeholder="이메일을 입력해주세요"
-                                    value={id}
-                                    readOnly={true}
-                                    _onChange={(e) => {
-                                        setId(e.target.value);
-                                    }}
-                                />
-                            </Grid>
-                            <Grid padding="16px 0px">
-                                <Input
-                                    id="edit-name"
-                                    label="이름"
-                                    placeholder="이름을 입력해주세요"
-                                    value={user_name}
-                                    _onChange={(e) => {
-                                        setUserName(e.target.value);
-                                    }}
-                                />
-                            </Grid>
-                            <Grid padding="16px 0px">
-                                <Input
-                                    type="password"
-                                    label="비밀번호"
-                                    placeholder="비밀번호을 입력해주세요"
-                                    _onChange={(e) => {
-                                        setPwd(e.target.value);
-                                    }}
-                                />
-                            </Grid>
-                            <Grid padding="16px 0px">
-                                <Input
-                                    type="password"
-                                    label="비밀번호 확인"
-                                    placeholder="비밀번호를 다시 입력해주세요"
-                                    _onChange={(e) => {
-                                        setPwdCheck(e.target.value);
-                                    }}
-                                />
+                            <Grid padding="16px">
+                                <Grid padding="16px 0px">
+                                    <Input
+                                        id="edit-email"
+                                        label="이메일"
+                                        placeholder="이메일을 입력해주세요"
+                                        value={id}
+                                        readOnly={true}
+                                        _onChange={(e) => {
+                                            setId(e.target.value);
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid padding="16px 0px">
+                                    <Input
+                                        id="edit-name"
+                                        label="이름"
+                                        placeholder="이름을 입력해주세요"
+                                        value={user_name}
+                                        _onChange={(e) => {
+                                            setUserName(e.target.value);
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid padding="16px 0px">
+                                    <Input
+                                        type="password"
+                                        label="비밀번호"
+                                        placeholder="비밀번호을 입력해주세요"
+                                        _onChange={(e) => {
+                                            setPwd(e.target.value);
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid padding="16px 0px">
+                                    <Input
+                                        type="password"
+                                        label="비밀번호 확인"
+                                        placeholder="비밀번호를 다시 입력해주세요"
+                                        _onChange={(e) => {
+                                            setPwdCheck(e.target.value);
+                                        }}
+                                    />
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
-                    <div style={{ width: '100%', height: '1px', background: '#b8b8b8', marginBottom: '20px' }}></div>
-                    {/* <label for="skill">주특기 선택</label> */}
-                    <input
-                        type="radio"
-                        name="skill"
-                        value="SPRING"
-                        checked={skill == "SPRING" && true}
-                        onChange={(e) => {
-                            setSkill(e.target.value);
-                        }}
-                    />
-                    SPRING
-                    <input
-                        type="radio"
-                        name="skill"
-                        value="NODE"
-                        checked={skill == "NODE" && true}
-                        onChange={(e) => {
-                            setSkill(e.target.value);
-                        }}
-                    />
-                    NODE
-                    <input
-                        type="radio"
-                        name="skill"
-                        value="REACT"
-                        checked={skill == "REACT" && true}
-                        onChange={(e) => {
-                            setSkill(e.target.value);
-                        }}
-                    />
-                    REACT
-                    <Input
-                        margin="10px 0px 0px 0px"
-                        id="edit-introduce"
-                        label="자기소개"
-                        _onChange={(e) => {
-                            setIntroduce(e.target.value);
-                        }}
-                        value={introduce}
-                    />
-                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                        <Button margin="24px 0px 0px 0px" _onClick={postEdit}>
-                            등록하기
-                        </Button>
-                    </div>
+                        <div style={{ width: '100%', height: '1px', background: '#b8b8b8', marginBottom: '20px' }}></div>
+                        {/* <label for="skill">주특기 선택</label> */}
+                        <input
+                            type="radio"
+                            name="skill"
+                            value="SPRING"
+                            checked={skill == "SPRING" && true}
+                            onChange={(e) => {
+                                setSkill(e.target.value);
+                            }}
+                        />
+                        SPRING
+                        <input
+                            type="radio"
+                            name="skill"
+                            value="NODE"
+                            checked={skill == "NODE" && true}
+                            onChange={(e) => {
+                                setSkill(e.target.value);
+                            }}
+                        />
+                        NODE
+                        <input
+                            type="radio"
+                            name="skill"
+                            value="REACT"
+                            checked={skill == "REACT" && true}
+                            onChange={(e) => {
+                                setSkill(e.target.value);
+                            }}
+                        />
+                        REACT
+                        <Input
+                            margin="10px 0px 0px 0px"
+                            id="edit-introduce"
+                            label="자기소개"
+                            _onChange={(e) => {
+                                setIntroduce(e.target.value);
+                            }}
+                            value={introduce}
+                        />
+                        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                            <Button margin="24px 0px 0px 0px" _onClick={postEdit}>
+                                등록하기
+                            </Button>
+                        </div>
+                    </Card>
                 </Grid>
             </div>
         </React.Fragment>

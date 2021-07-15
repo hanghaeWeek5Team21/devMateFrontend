@@ -33,7 +33,7 @@ const PostDetail = (props) => {
         backgroundImage
       >
         <Grid width="350px" margin="auto">
-          <Post {...detail} />
+          <Post no_like={true} {...detail} />
         </Grid>
         <Grid width="400px" margin="auto">
           <CommentWrite post_id={user_id} />
