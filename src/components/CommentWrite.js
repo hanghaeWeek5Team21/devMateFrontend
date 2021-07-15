@@ -26,7 +26,7 @@ const CommentWrite = (props) => {
           placeholder="내용을 입력해주세요"
           _onChange={onChange}
           value={comment_text}
-          width="65%"
+          width="90%"
         />
         <Grid margin="auto" width="auto">
           <Button width="50px" margin="0px 2px" _onClick={write}>
