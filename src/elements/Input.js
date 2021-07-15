@@ -12,6 +12,7 @@ const Input = (props) => {
     _onChange,
     name,
     id,
+    width,
     readOnly = false,
   } = props;
 
@@ -43,6 +44,7 @@ const Input = (props) => {
           onChange={_onChange}
           name={name}
           readOnly={readOnly}
+          width={width}
         />
       </Grid>
     </React.Fragment>
@@ -55,8 +57,9 @@ Input.defaultProps = {
   label: false,
   placeholder: '텍스트 입력',
   value: '',
-  _onChange: () => { },
+  _onChange: () => {},
   name: '',
+  width: '100%',
 };
 
 const ElTextarea = styled.textarea`
@@ -68,9 +71,11 @@ const ElTextarea = styled.textarea`
 
 const ElInput = styled.input`
   border: 1px solid #212121;
-  width: 100%;
-  padding: 12px 4px;
+  width: ${(props) => props.width};
+  padding: 12px 8px;
   box-sizing: border-box;
+  border-radius: 16px;
+  outline: none;
 `;
 
 export default Input;
