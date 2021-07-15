@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -18,23 +17,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
     minWidth: 345,
-    // maxHeight: 400,
-    // minHeight: 400,
+    maxHeight: 500,
     backgroundColor: grey[100],
   },
   media: {
     height: 0,
     paddingTop: "56.25%",
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
   },
   avatar: {
     backgroundColor: yellow[700],
@@ -43,8 +31,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 18,
     fontWeight: 700,
   },
-  Typography: {
-    minHeight: 100,
+  height: {
+    height: 100,
+    margin: 5,
   },
 }));
 
@@ -70,18 +59,16 @@ const Post = React.memo((props) => {
           </Text>
         }
       />
-
       <CardMedia className={classes.media} image={props.image_url} />
       <CardContent>
         <Typography
-          variant="body2"
+          variant="body1"
           color="textSecondary"
-          component="p"
-          minHeight="100"
+          component="div"
+          overflow="scroll"
+          className={classes.height}
         >
-          <Text margin="0px 10px 0px 3px" font-size="24px" bold overflow="auto">
-            {props.introduce}
-          </Text>
+          {props.introduce}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
