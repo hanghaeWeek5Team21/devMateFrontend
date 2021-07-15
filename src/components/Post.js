@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { Grid, Image, Text, HeartButton } from "../elements/Index";
-import { history } from "../redux/configureStore";
+import React from 'react';
+import styled from 'styled-components';
+import { Grid, Image, Text, HeartButton } from '../elements/Index';
+import { history } from '../redux/configureStore';
 
-import { useSelector, useDispatch } from "react-redux";
-import { actionCreators as postActions } from "../redux/modules/Post_module";
+import { useSelector, useDispatch } from 'react-redux';
+import { actionCreators as postActions } from '../redux/modules/Post_module';
 
 const Post = React.memo((props) => {
   const dispatch = useDispatch();
@@ -13,14 +13,14 @@ const Post = React.memo((props) => {
     <React.Fragment>
       <Grid>
         <Grid is_flex padding="16px">
-          <Grid is_flex width="auto">
+          <Grid padding="16px" width="auto">
             <Text bold>{props.name}</Text>
           </Grid>
-          <Grid padding="16px">
+          <Grid padding="16px" width="auto">
             <Text>{props.skill}</Text>
           </Grid>
         </Grid>
-        <Grid>
+        <Grid width="100px">
           <Image src={props.image_url} />
         </Grid>
         <Grid padding="16px">
@@ -50,14 +50,14 @@ const Post = React.memo((props) => {
 });
 
 Post.defaultProps = {
-  name: "shane",
+  name: 'shane',
   image_url:
-    "https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif",
-  skill: "React",
+    'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif',
+  skill: 'React',
   comment_cnt: 10,
   like_cnt: 0,
   is_like: false,
-  introduce: "안녕하세요~~!",
+  introduce: '안녕하세요~~!',
 };
 
 export default Post;
