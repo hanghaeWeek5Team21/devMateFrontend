@@ -16,15 +16,14 @@ const HeartButton = React.memo((props) => {
 });
 
 const Heart = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: inline-flex;
   background: url(${(props) => props.icon_url});
   background-size: cover;
   cursor: pointer;
   position: relative;
-  left: 7px;
-  top: 9px;
+  margin: 6px;
 `;
 
 export default HeartButton;
