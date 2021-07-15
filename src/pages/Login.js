@@ -20,19 +20,19 @@ const Login = () => {
     return true;
   };
 
-  const background = {
-    // background: 'url("https://herokusu.s3.ap-northeast-2.amazonaws.com/images/logo.png") no- repeat center center fixed',
-    backgroundImage: `url("https://cdn.codingworldnews.com/news/photo/202106/4144_5858_3337.jpg")`,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    display: "flex",
-    alignItem: "center",
-    justifyContent: "center",
-    height: "calc(100vh - 61px)",
-  }
+  // const background = {
+  //   // background: 'url("https://herokusu.s3.ap-northeast-2.amazonaws.com/images/logo.png") no- repeat center center fixed',
+  //   backgroundImage: `url("https://cdn.codingworldnews.com/news/photo/202106/4144_5858_3337.jpg")`,
+  //   backgroundPosition: 'center',
+  //   backgroundSize: 'cover',
+  //   backgroundRepeat: 'no-repeat',
+  //   display: "flex",
+  //   alignItem: "center",
+  //   justifyContent: "center",
+  //   height: "calc(100vh - 61px)",
+  // }
 
-  const login_bg = "#dedede";
+  const login_bg = "white";
 
   return (
     <React.Fragment>

@@ -115,21 +115,21 @@ const PostEdit = (props) => {
             });
     }, []);
 
-    const background = {
-        backgroundImage: `url("https://cdn.codingworldnews.com/news/photo/202106/4144_5858_3337.jpg")`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        display: "flex",
-        alignItem: "center",
-        justifyContent: "center",
-        height: "calc(100vh - 61px)",
-    }
+    // const background = {
+    //     backgroundImage: `url("https://cdn.codingworldnews.com/news/photo/202106/4144_5858_3337.jpg")`,
+    //     backgroundPosition: 'center',
+    //     backgroundSize: 'cover',
+    //     backgroundRepeat: 'no-repeat',
+    //     display: "flex",
+    //     alignItem: "center",
+    //     justifyContent: "center",
+    //     height: "calc(100vh - 61px)",
+    // }
 
     return (
         <React.Fragment>
             <div style={background}>
-                <Grid border_radius="20px" padding="16px" width="50vw" margin="50px auto auto" marginTop='30px'>
+                <Grid border_radius="7px" padding="16px" width="40vw" margin="50px auto auto" marginTop='30px' bg="white">
                     <Text size="32px" bold width="100%">
                         회원수정
                     </Text>
