@@ -16,7 +16,7 @@ const Grid = (props) => {
     border_radius,
     justifyContent,
     alignItems,
-
+    shadow,
   } = props;
 
   const styles = {
@@ -30,7 +30,7 @@ const Grid = (props) => {
     border_radius,
     justifyContent,
     alignItems,
-
+    shadow,
   };
 
   return (
@@ -50,10 +50,10 @@ Grid.defaultProps = {
   bg: false,
   children: null,
   height: false,
-  border_radius: "10px",
+  border_radius: '10px',
   justifyContent: false,
   alignItems: false,
-
+  shadow: false,
 };
 
 const GridBox = styled.div`
@@ -66,8 +66,8 @@ const GridBox = styled.div`
   ${(props) => (props.margin ? `margin: ${props.margin};` : '')};
   ${(props) => (props.bg ? `background-color: ${props.bg};` : '')};
   ${(props) =>
-    props.justifyContent ? `justify-content: ${props.justifyContent};` : ""};
-  ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : "")};
+    props.justifyContent ? `justify-content: ${props.justifyContent};` : ''};
+  ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : '')};
   ${(props) =>
     props.is_flex
       ? `display: flex; 
