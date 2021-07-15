@@ -147,7 +147,7 @@ const PostEdit = (props) => {
                                     src="http://via.placeholder.com/400x300"
                                 />
                                 <div style={{ justifyContent: 'space-between', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
-                                    <input type="file" style={{ width: '10vw' }} />
+                                    <input type="file" style={{ width: '10vw' }} id="image-input" />
                                     <Button _onClick={uploadImage}>업로드</Button>
                                 </div>
                             </div>
