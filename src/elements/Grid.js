@@ -13,7 +13,7 @@ const Grid = (props) => {
     bg,
     height,
     display,
-    border_radius
+    border_radius,
   };
 
   return (
