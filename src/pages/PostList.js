@@ -24,21 +24,21 @@ const PostList = (props) => {
   return (
     <React.Fragment>
       <WrapPost>
-        {/* <InfinityScroll loading={is_loading}> */}
-        {Object.keys(post_list).map((i) => {
-          return (
-            <WrapPost
-              key={post_list[i].id}
-              _onClick={() => {
-                document.location.href =
-                  "/detail/" + post_list[i].id.toString();
-              }}
-            >
-              <Post key={post_list[i].id} {...post_list[i]} />
-            </WrapPost>
-          );
-        })}
-        {/* </InfinityScroll> */}
+        <InfinityScroll loading={is_loading}>
+          {Object.keys(post_list).map((i) => {
+            return (
+              <WrapPost
+                key={post_list[i].id}
+                onClick={() => {
+                  document.location.href =
+                    "/detail/" + post_list[i].id.toString();
+                }}
+              >
+                <Post key={post_list[i].id} {...post_list[i]} />
+              </WrapPost>
+            );
+          })}
+        </InfinityScroll>
       </WrapPost>
     </React.Fragment>
   );
