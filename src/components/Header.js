@@ -24,23 +24,19 @@ const Header = (props) => {
           <Grid>
             <Text _onClick={() => { document.location.href = '/' }}>DEVMATE</Text>
           </Grid>
-          <Grid>
-            <Grid is_flex>
-              <Grid margin="0px 4px 0px 0px">
-                <Button _onClick={() => {
-                  document.location.href = '/edit';
-                }}
-                >내 정보</Button>
-              </Grid>
-              <Button
-                _onClick={() => {
-                  logout();
-                }}
-              >
-                로그아웃
-              </Button>
-            </Grid>
-          </Grid>
+          <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }} >
+            <Button margin="0px 4px 0px 0px" _onClick={() => {
+              document.location.href = '/edit';
+            }}
+            >내 정보</Button>
+            <Button
+              _onClick={() => {
+                logout();
+              }}
+            >
+              로그아웃
+            </Button>
+          </div>
         </Grid>
       </React.Fragment >
     );
@@ -49,30 +45,23 @@ const Header = (props) => {
     <React.Fragment>
       <Grid is_flex padding="4px 16px">
         <Grid>
-          <Text>DEVMATE</Text>
+          <Text _onClick={() => { document.location.href = '/' }}>DEVMATE</Text>
         </Grid>
-        <Grid>
-          <Grid is_flex>
-            <Grid margin="0px 4px 0px 0px">
-              <Button
-                _onClick={() => {
-                  document.location.href = '/login';
-                }}
-              >
-                로그인
-              </Button>
-            </Grid>
-            <Button
-              _onClick={() => {
-                document.location.href = '/signup';
-              }}
-            >
-              회원가입
-            </Button>
-          </Grid>
-        </Grid>
+        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }} >
+          <Button margin="0px 4px 0px 0px" _onClick={() => {
+            document.location.href = '/login';
+          }}
+          >로그인</Button>
+          <Button
+            _onClick={() => {
+              document.location.href = '/signup';
+            }}
+          >
+            회원가입
+          </Button>
+        </div>
       </Grid>
-    </React.Fragment>
+    </React.Fragment >
   );
 };
 

@@ -13,6 +13,7 @@ const Input = (props) => {
     name,
     id,
     readOnly = false,
+    bg,
   } = props;
 
   if (multiLine) {
@@ -33,7 +34,7 @@ const Input = (props) => {
 
   return (
     <React.Fragment>
-      <Grid>
+      <Grid bg={bg}>
         {label && <Text margin="0px">{label}</Text>}
         <ElInput
           id={id}
