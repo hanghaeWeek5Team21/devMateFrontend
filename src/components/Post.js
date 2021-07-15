@@ -17,7 +17,7 @@ const Post = React.memo((props) => {
             <Text bold>{props.name}</Text>
           </Grid>
           <Grid padding="16px" width="auto">
-            <Text>{props.skill}</Text>
+            <Text bold>{props.skill}</Text>
           </Grid>
         </Grid>
         <Grid width="100px">
@@ -42,7 +42,7 @@ const Post = React.memo((props) => {
           ></HeartButton>
         </Grid>
         <Grid padding="16px">
-          <Text>{props.contents}</Text>
+          <Text margin="0px">{props.introduce}</Text>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -23,11 +23,18 @@ const PostDetail = (props) => {
 
   return (
     <React.Fragment>
-      <Grid height="100vh">
+      <Grid
+        width="50vw"
+        height="100vh"
+        margin="20px auto"
+        border_radius="20px"
+        shadow
+        backgroundImage
+      >
         <Grid width="400px" margin="auto">
           <Post {...detail} />
         </Grid>
-        <Grid width="70%" margin="auto">
+        <Grid width="80%" margin="auto">
           <CommentWrite post_id={user_id} />
           <CommentList {...comment_list} />
         </Grid>
