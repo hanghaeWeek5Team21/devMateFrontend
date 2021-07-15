@@ -14,7 +14,9 @@ const Grid = (props) => {
     _onClick,
     display,
     border_radius,
-    shadow,
+    justifyContent,
+    alignItems,
+
   } = props;
 
   const styles = {
@@ -26,7 +28,9 @@ const Grid = (props) => {
     height,
     display,
     border_radius,
-    shadow,
+    justifyContent,
+    alignItems,
+
   };
 
   return (
@@ -46,19 +50,24 @@ Grid.defaultProps = {
   bg: false,
   children: null,
   height: false,
-  border_radius: '0px',
-  shadow: false,
+  border_radius: "10px",
+  justifyContent: false,
+  alignItems: false,
+
 };
 
 const GridBox = styled.div`
   width: ${(props) => props.width};
   box-sizing: border-box;
-  background-color: #eae7e7;
+  /* background-color: #eae7e7; */
   border-radius: ${(props) => props.border_radius};
   ${(props) => (props.height ? `height: ${props.height};` : '')}
   ${(props) => (props.padding ? `padding: ${props.padding};` : '')};
   ${(props) => (props.margin ? `margin: ${props.margin};` : '')};
   ${(props) => (props.bg ? `background-color: ${props.bg};` : '')};
+  ${(props) =>
+    props.justifyContent ? `justify-content: ${props.justifyContent};` : ""};
+  ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : "")};
   ${(props) =>
     props.is_flex
       ? `display: flex; 

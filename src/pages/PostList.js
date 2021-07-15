@@ -12,7 +12,6 @@ const PostList = (props) => {
   const dispatch = useDispatch();
   const post_list = useSelector((state) => state.post.list);
   const is_loading = useSelector((state) => state.post.is_loading);
-  const { history } = props;
 
   React.useEffect(() => {
     if (getCookie("is_login") == "true") {
@@ -24,24 +23,23 @@ const PostList = (props) => {
 
   return (
     <React.Fragment>
-      <Grid bg={"#EFF6FF"} padding="20px 0px">
-        <InfinityScroll loading={is_loading}>
-          {Object.keys(post_list).map((i) => {
-            return (
-              <Grid
-                key={post_list[i].id}
-                bg="#ffffff"
-                margin="8px 0px"
-                _onClick={() => {
-                  document.location.href = '/detail/' + post_list[i].id.toString();
-                }}
-              >
-                <Post key={post_list[i].id} {...post_list[i]} />
-              </Grid>
-            );
-          })}
-        </InfinityScroll>
-      </Grid>
+      <WrapPost>
+        {/* <InfinityScroll loading={is_loading}> */}
+        {Object.keys(post_list).map((i) => {
+          return (
+            <WrapPost
+              key={post_list[i].id}
+              _onClick={() => {
+                document.location.href =
+                  "/detail/" + post_list[i].id.toString();
+              }}
+            >
+              <Post key={post_list[i].id} {...post_list[i]} />
+            </WrapPost>
+          );
+        })}
+        {/* </InfinityScroll> */}
+      </WrapPost>
     </React.Fragment>
   );
 };
@@ -57,33 +55,13 @@ Post.defaultProps = {
   introduce: "안녕하세요~~!",
 };
 
-const PostListMainContainer = styled.div`
-  padding-top: 90px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const PostListContainer = styled.div`
-  margin: auto;
-  height: 100vh;
-  width: 1000px;
-  @media (max-width: 975) {
-    width: 80%;
-    height: auto;
-  }
-`;
-
-const Title = styled.h2`
-  margin-bottom: 30px;
-  margin-top: 40px;
-  text-align: center;
-`;
-
-const WrapProducts = styled.div`
+const WrapPost = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  background-color: "#ddafff";
+  margin: 20px 20px;
 `;
 
 export default PostList;

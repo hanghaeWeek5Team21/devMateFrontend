@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Text = (props) => {
-  const { bold, color, size, children, margin, _onClick, textAlign, width } = props;
+  const { bold, color, size, children, margin, _onClick, textAlign, width } =
+    props;
   const styles = { bold, color, size, margin, textAlign, width };
 
   return (
@@ -22,7 +23,7 @@ Text.defaultProps = {
   margin: false,
   textAlign: "",
   width: "fit-content",
-  _onClick: () => { },
+  _onClick: () => {},
 };
 
 const P = styled.p`
@@ -33,7 +34,6 @@ const P = styled.p`
   flex-direction: row;
   justify-content: center;
   width: ${(props) => props.width};
-  font-size: ${(props) => props.size};
   font-weight: ${(props) => (props.bold ? "600" : "400")};
   ${(props) => (props.margin ? `margin: ${props.margin}` : "")}
 `;

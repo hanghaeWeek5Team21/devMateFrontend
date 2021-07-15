@@ -1,20 +1,20 @@
-import React from 'react';
-import { history } from '../redux/configureStore';
-import { useSelector, useDispatch } from 'react-redux';
+import React from "react";
+import { history } from "../redux/configureStore";
+import { useSelector, useDispatch } from "react-redux";
 
-import { Grid, Text, Button } from '../elements/Index';
+import { Grid, Text, Button } from "../elements/Index";
 
-import { actionCreators as userActions } from '../redux/modules/User_module';
-import { getCookie, setCookie, deleteCookie } from '../shared/Cookie';
+import { actionCreators as userActions } from "../redux/modules/User_module";
+import { getCookie, setCookie, deleteCookie } from "../shared/Cookie";
 
 const Header = (props) => {
-  let is_login = getCookie('is_login');
+  let is_login = getCookie("is_login");
 
   const logout = () => {
-    deleteCookie('is_login');
-    deleteCookie('user');
-    window.alert('로그아웃 되었습니다.');
-    document.location.href = '/';
+    deleteCookie("is_login");
+    deleteCookie("user");
+    window.alert("로그아웃 되었습니다.");
+    document.location.href = "/";
   };
 
   if (is_login) {
@@ -22,13 +22,29 @@ const Header = (props) => {
       <React.Fragment>
         <Grid is_flex padding="4px 16px">
           <Grid>
-            <Text _onClick={() => { document.location.href = '/' }}>DEVMATE</Text>
+            <Text
+              _onClick={() => {
+                document.location.href = "/";
+              }}
+            >
+              DEVMATE
+            </Text>
           </Grid>
-          <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }} >
-            <Button margin="0px 4px 0px 0px" _onClick={() => {
-              document.location.href = '/edit';
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
             }}
-            >내 정보</Button>
+          >
+            <Button
+              margin="0px 4px 0px 0px"
+              _onClick={() => {
+                document.location.href = "/edit";
+              }}
+            >
+              내 정보
+            </Button>
             <Button
               _onClick={() => {
                 logout();
@@ -38,30 +54,46 @@ const Header = (props) => {
             </Button>
           </div>
         </Grid>
-      </React.Fragment >
+      </React.Fragment>
     );
   }
   return (
     <React.Fragment>
       <Grid is_flex padding="4px 16px">
         <Grid>
-          <Text _onClick={() => { document.location.href = '/' }}>DEVMATE</Text>
+          <Text
+            _onClick={() => {
+              document.location.href = "/";
+            }}
+          >
+            DEVMATE
+          </Text>
         </Grid>
-        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }} >
-          <Button margin="0px 4px 0px 0px" _onClick={() => {
-            document.location.href = '/login';
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
           }}
-          >로그인</Button>
+        >
+          <Button
+            margin="0px 4px 0px 0px"
+            _onClick={() => {
+              document.location.href = "/login";
+            }}
+          >
+            로그인
+          </Button>
           <Button
             _onClick={() => {
-              document.location.href = '/signup';
+              document.location.href = "/signup";
             }}
           >
             회원가입
           </Button>
         </div>
       </Grid>
-    </React.Fragment >
+    </React.Fragment>
   );
 };
 
