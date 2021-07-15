@@ -21,18 +21,22 @@ const Login = () => {
   };
 
   const background = {
-    background: 'url("/static/img/back_img_org.jpg") no- repeat center center fixed',
-    webkitBackgroundSize: 'cover',
-    mozBackgroundSize: 'cover',
-    oBackgroundSize: 'cover',
+    // background: 'url("https://herokusu.s3.ap-northeast-2.amazonaws.com/images/logo.png") no- repeat center center fixed',
+    backgroundImage: `url("https://cdn.codingworldnews.com/news/photo/202106/4144_5858_3337.jpg")`,
+    backgroundPosition: 'center',
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    display: "flex",
+    alignItem: "center",
+    justifyContent: "center",
+    height: "calc(100vh - 61px)",
   }
 
   const login_bg = "#dedede";
 
   return (
     <React.Fragment>
-      <div style={{ display: "flex", alignItem: "center", justifyContent: "center", height: "calc(100vh - 61px)" }}>
+      <div style={background}>
         <Grid margin="auto" width="380px" bg={login_bg} padding="30px" border_radius="15px">
           <Text size="25px" bold width="100%">
             로그인
@@ -46,6 +50,7 @@ const Login = () => {
               placeholder="아이디를 입력해주세요"
             />
             <Input
+              margin="15px 0px 0px 0px"
               bg={login_bg}
               label="비밀번호"
               type="password"
