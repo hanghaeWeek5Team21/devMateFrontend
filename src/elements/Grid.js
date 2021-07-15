@@ -1,6 +1,6 @@
-import { ContactPhoneTwoTone } from "@material-ui/icons";
-import React from "react";
-import styled from "styled-components";
+import { ContactPhoneTwoTone } from '@material-ui/icons';
+import React from 'react';
+import styled from 'styled-components';
 
 const Grid = (props) => {
   const {
@@ -16,6 +16,7 @@ const Grid = (props) => {
     border_radius,
     justifyContent,
     alignItems,
+
   } = props;
 
   const styles = {
@@ -29,6 +30,7 @@ const Grid = (props) => {
     border_radius,
     justifyContent,
     alignItems,
+
   };
 
   return (
@@ -42,7 +44,7 @@ const Grid = (props) => {
 
 Grid.defaultProps = {
   is_flex: false,
-  width: "100%",
+  width: '100%',
   padding: false,
   margin: false,
   bg: false,
@@ -51,6 +53,7 @@ Grid.defaultProps = {
   border_radius: "10px",
   justifyContent: false,
   alignItems: false,
+
 };
 
 const GridBox = styled.div`
@@ -58,10 +61,10 @@ const GridBox = styled.div`
   box-sizing: border-box;
   /* background-color: #eae7e7; */
   border-radius: ${(props) => props.border_radius};
-  ${(props) => (props.height ? `height: ${props.height};` : "")}
-  ${(props) => (props.padding ? `padding: ${props.padding};` : "")};
-  ${(props) => (props.margin ? `margin: ${props.margin};` : "")};
-  ${(props) => (props.bg ? `background-color: ${props.bg};` : "")};
+  ${(props) => (props.height ? `height: ${props.height};` : '')}
+  ${(props) => (props.padding ? `padding: ${props.padding};` : '')};
+  ${(props) => (props.margin ? `margin: ${props.margin};` : '')};
+  ${(props) => (props.bg ? `background-color: ${props.bg};` : '')};
   ${(props) =>
     props.justifyContent ? `justify-content: ${props.justifyContent};` : ""};
   ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : "")};
@@ -69,8 +72,14 @@ const GridBox = styled.div`
     props.is_flex
       ? `display: flex; 
       align-items: stretch; 
-      align-content:flex-start;`
-      : ""};
+      align-content:flex-start; 
+      justify-content: flex-start;`
+      : ''};
+  ${(props) =>
+    props.shadow
+      ? `-webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5); 
+      box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5);`
+      : ''}
 `;
 
 export default Grid;

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -18,6 +19,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Grid, Image, Text, HeartButton } from "../elements/Index";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/Post_module";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,6 +56,7 @@ const Post = React.memo((props) => {
   };
 
   return (
+
     <Card className={classes.root}>
       <CardHeader
         avatar={
@@ -159,10 +162,10 @@ export default Post;
 // });
 
 Post.defaultProps = {
-  name: "shane",
+  name: 'shane',
   image_url:
-    "https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif",
-  skill: "React",
+    'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif',
+  skill: 'React',
   comment_cnt: 10,
   like_cnt: 0,
   is_like: false,

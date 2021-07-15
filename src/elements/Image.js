@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Image = (props) => {
   const { src, size, id } = props;
@@ -15,13 +15,14 @@ const Image = (props) => {
 Image.defaultProps = {
   src: "",
   size: 300,
+
 };
 
 const ImageDefault = styled.div`
   --size: ${(props) => props.size}px;
   width: var(--size);
   height: var(--size);
-  background-image: url("${(props) => props.src}");
+  background-image: url('${(props) => props.src}');
   background-size: cover;
 `;
 

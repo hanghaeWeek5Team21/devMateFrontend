@@ -15,6 +15,7 @@ const Input = (props) => {
     width,
     readOnly = false,
     bg,
+    margin,
   } = props;
 
   if (multiLine) {
@@ -35,7 +36,7 @@ const Input = (props) => {
 
   return (
     <React.Fragment>
-      <Grid bg={bg}>
+      <Grid bg={bg} margin={margin}>
         {label && <Text margin="0px">{label}</Text>}
         <ElInput
           id={id}
@@ -58,7 +59,7 @@ Input.defaultProps = {
   label: false,
   placeholder: '텍스트 입력',
   value: '',
-  _onChange: () => {},
+  _onChange: () => { },
   name: '',
   width: '100%',
 };
