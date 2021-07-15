@@ -1,6 +1,8 @@
 import React from "react";
+import styled from "styled-components";
 import { history } from "../redux/configureStore";
 import { useSelector, useDispatch } from "react-redux";
+import banner from "../shared/banner.png";
 
 import { Grid, Text, Button } from "../elements/Index";
 
@@ -20,15 +22,15 @@ const Header = (props) => {
   if (is_login) {
     return (
       <React.Fragment>
-        <Grid is_flex padding="4px 16px">
+        <Grid is_flex padding="20px 20px">
           <Grid>
-            <Text
-              _onClick={() => {
+            <img
+              src={banner}
+              height="70px"
+              onClick={() => {
                 document.location.href = "/";
               }}
-            >
-              DEVMATE
-            </Text>
+            />
           </Grid>
           <div
             style={{
@@ -61,13 +63,11 @@ const Header = (props) => {
     <React.Fragment>
       <Grid is_flex padding="4px 16px">
         <Grid>
-          <Text
-            _onClick={() => {
+          <imageLogo
+            onClick={() => {
               document.location.href = "/";
             }}
-          >
-            DEVMATE
-          </Text>
+          ></imageLogo>
         </Grid>
         <div
           style={{
@@ -98,5 +98,12 @@ const Header = (props) => {
 };
 
 Header.defaultProps = {};
+
+const imageLogo = styled.div`
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  src: "https://www.canva.com/design/DAEkQPWiyQY/wrmGhPlLL8V32mDDfVOgYA/view?utm_content=DAEkQPWiyQY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink";
+`;
 
 export default Header;
