@@ -13,6 +13,7 @@ const Text = (props) => {
     width,
     position,
     left,
+    overflow,
   } = props;
 
   const styles = {
@@ -24,6 +25,7 @@ const Text = (props) => {
     width,
     position,
     left,
+    overflow,
   };
 
   return (
@@ -45,6 +47,7 @@ Text.defaultProps = {
   width: "fit-content",
   position: null,
   left: null,
+  overflow: null,
   _onClick: () => {},
 };
 
@@ -57,6 +60,7 @@ const P = styled.p`
   justify-content: center;
   width: ${(props) => props.width};
   position: ${(props) => props.position};
+  overflow: ${(props) => props.overflow};
   left: ${(props) => props.left};
   font-weight: ${(props) => (props.bold ? "600" : "400")};
   ${(props) => (props.margin ? `margin: ${props.margin}` : "")}

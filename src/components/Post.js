@@ -60,7 +60,7 @@ const Post = React.memo((props) => {
         }
       />
       <CardMedia className={classes.media} image={props.image_url} />
-      <CardContent >
+      <CardContent>
         <Typography
           variant="body1"
           color="textSecondary"
