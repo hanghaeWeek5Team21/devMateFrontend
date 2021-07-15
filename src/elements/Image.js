@@ -13,8 +13,9 @@ const Image = (props) => {
 };
 
 Image.defaultProps = {
-  src: '',
-  size: 400,
+  src: "",
+  size: 300,
+
 };
 
 const ImageDefault = styled.div`
