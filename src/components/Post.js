@@ -1,29 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { yellow, grey } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import { Grid, Image, Text, HeartButton } from "../elements/Index";
-import { useSelector, useDispatch } from "react-redux";
+import { Text, HeartButton } from "../elements/Index";
+import { useDispatch } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/Post_module";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
     minWidth: 345,
+    // maxHeight: 400,
+    // minHeight: 400,
     backgroundColor: grey[100],
   },
   media: {
@@ -77,8 +73,15 @@ const Post = React.memo((props) => {
 
       <CardMedia className={classes.media} image={props.image_url} />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p" minHeight="100">
-          {props.introduce}
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          minHeight="100"
+        >
+          <Text margin="0px 10px 0px 3px" font-size="24px" bold overflow="auto">
+            {props.introduce}
+          </Text>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
