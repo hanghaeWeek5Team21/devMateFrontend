@@ -26,7 +26,6 @@ const MainContainer = styled.div`
   padding: 20px 0;
   display: flex;
   flex-direction: column;
-  background-color: #7953d2;
 `;
 
 export default MainPage;

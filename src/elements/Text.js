@@ -2,9 +2,29 @@ import React from "react";
 import styled from "styled-components";
 
 const Text = (props) => {
-  const { bold, color, size, children, margin, _onClick, textAlign, width } =
-    props;
-  const styles = { bold, color, size, margin, textAlign, width };
+  const {
+    bold,
+    color,
+    size,
+    children,
+    margin,
+    _onClick,
+    textAlign,
+    width,
+    position,
+    left,
+  } = props;
+
+  const styles = {
+    bold,
+    color,
+    size,
+    margin,
+    textAlign,
+    width,
+    position,
+    left,
+  };
 
   return (
     <React.Fragment>
@@ -23,6 +43,8 @@ Text.defaultProps = {
   margin: false,
   textAlign: "",
   width: "fit-content",
+  position: null,
+  left: null,
   _onClick: () => {},
 };
 
@@ -34,6 +56,8 @@ const P = styled.p`
   flex-direction: row;
   justify-content: center;
   width: ${(props) => props.width};
+  position: ${(props) => props.position};
+  left: ${(props) => props.left};
   font-weight: ${(props) => (props.bold ? "600" : "400")};
   ${(props) => (props.margin ? `margin: ${props.margin}` : "")}
 `;
