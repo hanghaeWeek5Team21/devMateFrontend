@@ -2,6 +2,7 @@ import React from 'react';
 import Post from '../components/Post';
 import CommentList from '../components/CommentList';
 import CommentWrite from '../components/CommentWrite';
+import { Grid } from '../elements/Index';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators as detailActions } from '../redux/modules/Detail_module';
@@ -23,8 +24,12 @@ const PostDetail = (props) => {
   return (
     <React.Fragment>
       <Post {...detail} />
-      <CommentWrite post_id={user_id} />
-      <CommentList {...comment_list} />
+      <Grid>
+        <Grid width="70%" margin="auto">
+          <CommentWrite post_id={user_id} />
+          <CommentList {...comment_list} />
+        </Grid>
+      </Grid>
     </React.Fragment>
   );
 };

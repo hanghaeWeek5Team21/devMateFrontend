@@ -18,7 +18,7 @@ const Login = () => {
     const params = Object.fromEntries(urlSearchParams.entries());
     if (params.res == 'false') return false;
     return true;
-  }
+  };
 
   const background = {
     background: 'url("/static/img/back_img_org.jpg") no- repeat center center fixed',

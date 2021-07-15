@@ -13,7 +13,9 @@ const SignUp = (props) => {
   const [user_name, setUserName] = React.useState('');
   const [skill, setSkill] = React.useState('');
   const [introduce, setIntroduce] = React.useState('');
-  const [image_url, setImageURL] = React.useState('https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif');
+  const [image_url, setImageURL] = React.useState(
+    'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif'
+  );
 
   const uploadImage = () => {
     // let file = document.getElementById("image-input").files[0];
@@ -23,7 +25,6 @@ const SignUp = (props) => {
     // }
     // const spinner = 'https://devmate.s3.ap-northeast-2.amazonaws.com/image/frontend/loading.gif';
     // document.getElementById("image-show").src = spinner;
-
     // const formData = new FormData();
     // formData.append('file', file);
     // axios.post(config.api + '/api/file/image', formData, {
@@ -73,9 +74,18 @@ const SignUp = (props) => {
       <Grid padding="16px">
         <Grid is_flex>
           <Grid padding="16px">
-            <img size="400" id="image-show"
-              style={{ display: 'flex', justifyContent: 'center', margin: 'auto', width: '400px', height: '300px' }}
-              src="http://via.placeholder.com/400x300" />
+            <img
+              size="400"
+              id="image-show"
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                margin: 'auto',
+                width: '400px',
+                height: '300px',
+              }}
+              src="http://via.placeholder.com/400x300"
+            />
             <input type="file" id="image-input" />
             <Button _onClick={uploadImage}>업로드</Button>
           </Grid>
